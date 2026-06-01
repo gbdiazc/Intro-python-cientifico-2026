@@ -16,7 +16,7 @@ st.set_page_config(
     layout="centered",
 )
 
-TIEMPO_LIMITE = 5 * 60   # segundos
+TIEMPO_LIMITE = 10 * 60  # segundos
 NUM_PREGUNTAS = 5
 PUNTOS_POR_PREGUNTA = 2   # 5 × 2 = 10
 
@@ -93,20 +93,29 @@ html, body, [class*="css"], .stApp,
 }
 
 .stRadio > div { gap: 7px !important; }
-.stRadio label {
+.stRadio > div > label {
     background: #f8f9fb !important;
     border: 1.5px solid #dde3ea !important;
     border-radius: 8px !important;
     padding: 9px 16px !important;
     font-size: 0.83rem !important;
     font-family: 'JetBrains Mono', monospace !important;
-    color: #2c3e50 !important;
+    color: #1a1a2e !important;
     cursor: pointer !important;
-    transition: border-color 0.15s, background 0.15s;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
 }
-.stRadio label:hover {
+.stRadio > div > label:hover {
     border-color: #2e8b57 !important;
     background: #f0f9f4 !important;
+}
+.stRadio > div > label > div {
+    color: #1a1a2e !important;
+}
+.stRadio > div > label p {
+    color: #1a1a2e !important;
+    margin: 0 !important;
 }
 
 .stButton > button {
@@ -347,12 +356,12 @@ if st.session_state.pantalla == "login":
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        iniciar = st.button("▶  Comenzar examen  (5 min)", use_container_width=True)
+        iniciar = st.button("▶  Comenzar examen  (10 min)", use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown(
         "<p style='text-align:center; color:#888; font-size:0.8rem; margin-top:14px;'>"
-        "Tendrás <strong>5 minutos</strong> para responder 5 preguntas. "
+        "Tendrás <strong>10 minutos</strong> para responder 5 preguntas. "
         "El examen se envía automáticamente al terminar el tiempo.</p>",
         unsafe_allow_html=True,
     )
@@ -425,11 +434,9 @@ elif st.session_state.pantalla == "examen":
 
             pid = p["id"]
             if p["tipo"] == "escritura":
-                val   = st.session_state.respuestas.get(pid, "")
                 nueva = st.text_input(
                     f"resp_{pid}",
-                    value=val,
-                    placeholder=p.get("placeholder", ""),
+                    placeholder=p.get("placeholder", "Tu respuesta aquí..."),
                     key=f"input_{pid}",
                     label_visibility="collapsed",
                 )
