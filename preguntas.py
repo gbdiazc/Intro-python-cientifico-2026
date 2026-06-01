@@ -1,8 +1,5 @@
 # ============================================================
 #  BANCO DE PREGUNTAS — Introducción a Python / IMP
-#  Tipos:
-#    "escritura"       → el alumno escribe la línea completa
-#    "opcion_multiple" → elige entre 4 opciones
 # ============================================================
 
 PREGUNTAS = [
@@ -16,7 +13,7 @@ PREGUNTAS = [
             "`\" Estamos en el Instituto Mexicano \"`\n\n"
             "Escribe la línea completa de código:"
         ),
-        "placeholder": 'a = " Estamos en el Instituto Mexicano "',
+        "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             'a = " Estamos en el Instituto Mexicano "',
             "a = ' Estamos en el Instituto Mexicano '",
@@ -37,7 +34,7 @@ PREGUNTAS = [
             "Asigna a la variable `b` el string `\"del Petróleo\"`.\n\n"
             "Escribe la línea completa de código:"
         ),
-        "placeholder": 'b = "del Petróleo"',
+        "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             'b = "del Petróleo"',
             'b = "del petróleo"',
@@ -116,7 +113,7 @@ PREGUNTAS = [
             'Convierte el string `"3.14"` a número **flotante** y asígnalo a la variable `pi`.\n\n'
             "Escribe la línea completa de código:"
         ),
-        "placeholder": 'pi = float("3.14")',
+        "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             'pi = float("3.14")',
             "pi = float('3.14')",
@@ -134,7 +131,7 @@ PREGUNTAS = [
             'Convierte el string `"42"` a número **entero** y asígnalo a la variable `n`.\n\n'
             "Escribe la línea completa de código:"
         ),
-        "placeholder": 'n = int("42")',
+        "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             'n = int("42")',
             "n = int('42')",
@@ -152,11 +149,10 @@ PREGUNTAS = [
             "Dada `palabra = \"Python\"`, conviértela a **mayúsculas** y asígnala a `mayus`.\n\n"
             "Escribe la línea completa de código:"
         ),
-        "placeholder": "mayus = palabra.upper()",
+        "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             "mayus = palabra.upper()",
             "mayus=palabra.upper()",
-            "mayus = palabra.upper(  )",
             "mayus= palabra.upper()",
         ],
         "puntaje": 1,
@@ -170,11 +166,10 @@ PREGUNTAS = [
             "Dada `palabra = \"Python\"`, conviértela a **minúsculas** y asígnala a `minus`.\n\n"
             "Escribe la línea completa de código:"
         ),
-        "placeholder": "minus = palabra.lower()",
+        "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             "minus = palabra.lower()",
             "minus=palabra.lower()",
-            "minus = palabra.lower(  )",
             "minus= palabra.lower()",
         ],
         "puntaje": 1,
@@ -188,7 +183,7 @@ PREGUNTAS = [
             'Convierte el string `"27.5"` a número **flotante** y asígnalo a `resultado`.\n\n'
             "Escribe la línea completa de código:"
         ),
-        "placeholder": 'resultado = float("27.5")',
+        "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             'resultado = float("27.5")',
             "resultado = float('27.5')",

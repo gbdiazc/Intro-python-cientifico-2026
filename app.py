@@ -3,6 +3,9 @@ import random
 import time
 import csv
 import os
+import base64
+import json
+import requests
 from datetime import datetime
 from preguntas import PREGUNTAS
 
@@ -14,39 +17,25 @@ st.set_page_config(
 )
 
 TIEMPO_LIMITE = 5 * 60   # segundos
-CSV_PATH = "calificaciones.csv"
+NUM_PREGUNTAS = 5
+PUNTOS_POR_PREGUNTA = 2   # 5 × 2 = 10
 
-# ── CSS global — tema claro, estilo limpio ────────────────────────────────────
+# ── CSS global — tema claro ───────────────────────────────────────────────────
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
-html, body, [class*="css"] {
+html, body, [class*="css"], .stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stAppViewContainer"] > .main,
+[data-testid="stMain"] {
     font-family: 'Inter', sans-serif !important;
     background-color: #f5f7fa !important;
     color: #1a1a2e !important;
 }
-
 #MainMenu, footer, header { visibility: hidden; }
 .block-container { padding-top: 1.5rem !important; max-width: 820px !important; }
 
-/* ── Encabezado institucional ── */
-.header-box {
-    background-color: #f2f2f2;
-    border-left: 8px solid #2e8b57;
-    padding: 20px;
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
-    margin-bottom: 24px;
-    text-align: center;
-}
-.header-box h1 { color: #2e8b57; font-size: 1.35rem; margin: 0 0 4px 0; }
-.header-box h2 { color: #2e8b57; font-size: 1.05rem; margin: 0 0 4px 0; }
-.header-box h3 { color: #2e8b57; font-size: 0.9rem;  margin: 0 0 14px 0; font-weight: 500; }
-.header-box .prof { font-size: 15px; color: #333; line-height: 1.8; margin-bottom: 10px; }
-.header-box .dept { font-size: 14px; color: #555; }
-
-/* ── Timer ── */
 .timer-box {
     background: #ffffff;
     border: 2px solid #2e8b57;
@@ -65,7 +54,6 @@ html, body, [class*="css"] {
 .timer-low { color: #c0392b; border-color: #c0392b; animation: pulse 1s infinite; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.55} }
 
-/* ── Tarjeta de pregunta ── */
 .pregunta-card {
     background: #ffffff;
     border: 1px solid #dde3ea;
@@ -86,7 +74,6 @@ html, body, [class*="css"] {
     letter-spacing: 0.06em;
 }
 
-/* ── Inputs ── */
 .stTextInput > div > div > input {
     background: #f8f9fb !important;
     border: 1.5px solid #c8d0da !important;
@@ -105,7 +92,6 @@ html, body, [class*="css"] {
     font-family: 'JetBrains Mono', monospace !important;
 }
 
-/* ── Radio buttons ── */
 .stRadio > div { gap: 7px !important; }
 .stRadio label {
     background: #f8f9fb !important;
@@ -123,7 +109,6 @@ html, body, [class*="css"] {
     background: #f0f9f4 !important;
 }
 
-/* ── Botones ── */
 .stButton > button {
     background: linear-gradient(135deg, #27ae60, #2e8b57) !important;
     color: #fff !important;
@@ -134,15 +119,10 @@ html, body, [class*="css"] {
     font-size: 0.92rem !important;
     padding: 11px 28px !important;
     letter-spacing: 0.03em !important;
-    transition: opacity 0.2s, transform 0.1s !important;
     box-shadow: 0 2px 8px rgba(46,139,87,0.25) !important;
 }
-.stButton > button:hover {
-    opacity: 0.88 !important;
-    transform: translateY(-1px) !important;
-}
+.stButton > button:hover { opacity: 0.88 !important; }
 
-/* ── Login box ── */
 .login-box {
     background: #ffffff;
     border: 1px solid #dde3ea;
@@ -152,7 +132,6 @@ html, body, [class*="css"] {
     margin-top: 8px;
 }
 
-/* ── Resultado ── */
 .resultado-box {
     background: #ffffff;
     border: 1px solid #dde3ea;
@@ -170,7 +149,6 @@ html, body, [class*="css"] {
 .detalle-ok   { color: #2e8b57; font-weight: 600; }
 .detalle-mal  { color: #c0392b; font-weight: 600; }
 
-/* ── Code blocks ── */
 code {
     background: #eef2f7 !important;
     color: #c0392b !important;
@@ -184,10 +162,8 @@ pre {
     border: 1px solid #dde3ea !important;
     border-radius: 7px !important;
 }
-
 hr { border-color: #e8ecf0 !important; margin: 20px 0 !important; }
 
-/* ── Info alumno ── */
 .alumno-info {
     background: #f0f9f4;
     border-left: 4px solid #2e8b57;
@@ -201,7 +177,7 @@ hr { border-color: #e8ecf0 !important; margin: 20px 0 !important; }
 """, unsafe_allow_html=True)
 
 
-# ── Helpers ─────────────────────────────────────────────────────────────────
+# ── Helpers ──────────────────────────────────────────────────────────────────
 
 def render_header():
     st.markdown("""
@@ -227,45 +203,6 @@ def render_header():
     """, unsafe_allow_html=True)
 
 
-def guardar_calificacion(nombre, calificacion, total, respuestas_detalle):
-    existe = os.path.isfile(CSV_PATH)
-    with open(CSV_PATH, "a", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        if not existe:
-            writer.writerow([
-                "Fecha", "Nombre",
-                "Calificacion", "Correctas", "Total",
-                "Preguntas_IDs", "Tiempo_usado_seg"
-            ])
-        writer.writerow([
-            datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            nombre,
-            round(calificacion, 2),
-            sum(1 for r in respuestas_detalle if r["correcto"]),
-            total,
-            "-".join(str(r["id"]) for r in respuestas_detalle),
-            st.session_state.get("tiempo_usado", "N/A"),
-        ])
-
-
-def calificar(preguntas, respuestas):
-    detalle = []
-    for p in preguntas:
-        pid  = p["id"]
-        resp = respuestas.get(pid, "").strip()
-        if p["tipo"] == "escritura":
-            correcto = resp in [v.strip() for v in p["respuestas_validas"]]
-        else:
-            correcto = resp == p["respuesta_correcta"]
-        detalle.append({
-            "id": pid,
-            "tipo": p["tipo"],
-            "respuesta_alumno": resp,
-            "correcto": correcto,
-        })
-    return detalle
-
-
 def tiempo_str(seg):
     m, s = divmod(int(seg), 60)
     return f"{m:02d}:{s:02d}"
@@ -279,24 +216,120 @@ def color_timer(seg):
     return "timer-low"
 
 
+def calificar(preguntas, respuestas):
+    detalle = []
+    for p in preguntas:
+        pid  = p["id"]
+        raw  = respuestas.get(pid, None)
+        resp = (raw or "").strip()
+        if p["tipo"] == "escritura":
+            correcto = resp in [v.strip() for v in p["respuestas_validas"]]
+        else:
+            correcto = (resp == p["respuesta_correcta"]) if resp else False
+        detalle.append({
+            "id": pid,
+            "respuesta_alumno": resp,
+            "correcto": correcto,
+        })
+    return detalle
+
+
+# ── GitHub: guardar CSV ───────────────────────────────────────────────────────
+
+def guardar_en_github(nombre, calificacion, correctas):
+    """
+    Guarda/actualiza calificaciones.csv en el repo de GitHub vía API.
+    Requiere en Streamlit Cloud → Settings → Secrets:
+      GH_TOKEN   → Personal Access Token con permiso 'repo'
+      GH_REPO    → usuario/nombre-repo  (p. ej. gbdiaz/examen-python)
+      GH_BRANCH  → rama (normalmente 'main')
+    """
+    try:
+        token  = st.secrets["GH_TOKEN"]
+        repo   = st.secrets["GH_REPO"]
+        branch = st.secrets.get("GH_BRANCH", "main")
+    except Exception as e:
+        st.warning(f"⚠️ No se encontraron los secrets de GitHub: {e}")
+        return False
+
+    csv_path_gh = "calificaciones.csv"
+    api_url = f"https://api.github.com/repos/{repo}/contents/{csv_path_gh}"
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+
+    # Intentar hasta 3 veces (por si hay conflicto de sha entre alumnos simultáneos)
+    for intento in range(3):
+        # 1. Leer versión actual
+        sha = None
+        contenido_actual = ""
+        r = requests.get(api_url, headers=headers, params={"ref": branch})
+        if r.status_code == 200:
+            data = r.json()
+            sha  = data["sha"]
+            contenido_actual = base64.b64decode(data["content"]).decode("utf-8")
+        elif r.status_code not in (404,):
+            st.warning(f"⚠️ Error al leer GitHub ({r.status_code}): {r.text}")
+            return False
+
+        # 2. Construir nueva fila
+        nueva_fila = (
+            f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")},'
+            f'"{nombre}",'
+            f'{calificacion:.0f},'
+            f'{correctas},'
+            f'{NUM_PREGUNTAS},'
+            f'{tiempo_str(st.session_state.get("tiempo_usado", 0))}\n'
+        )
+
+        if not contenido_actual:
+            contenido_actual = "Fecha,Nombre,Calificacion,Correctas,Total,Tiempo\n"
+
+        nuevo_contenido = contenido_actual + nueva_fila
+        contenido_b64   = base64.b64encode(nuevo_contenido.encode("utf-8")).decode("utf-8")
+
+        # 3. PUT
+        payload = {
+            "message": f"Calificacion: {nombre} — {calificacion:.0f}/10",
+            "content": contenido_b64,
+            "branch":  branch,
+        }
+        if sha:
+            payload["sha"] = sha
+
+        r2 = requests.put(api_url, headers=headers, data=json.dumps(payload))
+
+        if r2.status_code in (200, 201):
+            return True
+        elif r2.status_code == 409 and intento < 2:
+            # Conflicto de sha — otro alumno guardó al mismo tiempo, reintentar
+            time.sleep(1)
+            continue
+        else:
+            st.warning(f"⚠️ No se pudo guardar en GitHub ({r2.status_code}): {r2.text}")
+            return False
+
+    return False
+
+
 # ── Inicializar estado ────────────────────────────────────────────────────────
 
 def init_state():
     defaults = {
-        "pantalla":         "login",
-        "nombre":           "",
-        "preguntas_selec":  [],
-        "respuestas":       {},
-        "inicio_ts":        None,
-        "detalle":          [],
-        "calificacion":     0.0,
-        "tiempo_usado":     0,
-        "enviado":          False,
+        "pantalla":        "login",
+        "nombre":          "",
+        "preguntas_selec": [],
+        "respuestas":      {},
+        "inicio_ts":       None,
+        "detalle":         [],
+        "calificacion":    0.0,
+        "tiempo_usado":    0,
+        "enviado":         False,
     }
     for k, v in defaults.items():
         if k not in st.session_state:
             st.session_state[k] = v
-
 
 init_state()
 
@@ -310,8 +343,7 @@ if st.session_state.pantalla == "login":
 
     st.markdown('<div class="login-box">', unsafe_allow_html=True)
     st.markdown("#### Ingresa tu nombre para comenzar")
-    nombre = st.text_input("Nombre completo", placeholder="p. ej.  Ana García López", label_visibility="collapsed")
-
+    nombre = st.text_input("Nombre", placeholder="p. ej.  Ana García López", label_visibility="collapsed")
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
@@ -330,7 +362,7 @@ if st.session_state.pantalla == "login":
             st.error("⚠️  Por favor ingresa tu nombre antes de continuar.")
         else:
             st.session_state.nombre          = nombre.strip()
-            st.session_state.preguntas_selec = random.sample(PREGUNTAS, 5)
+            st.session_state.preguntas_selec = random.sample(PREGUNTAS, NUM_PREGUNTAS)
             st.session_state.respuestas      = {}
             st.session_state.inicio_ts       = time.time()
             st.session_state.enviado         = False
@@ -343,7 +375,6 @@ if st.session_state.pantalla == "login":
 # ════════════════════════════════════════════════════════════════════════════
 
 elif st.session_state.pantalla == "examen":
-
     render_header()
 
     elapsed  = time.time() - st.session_state.inicio_ts
@@ -358,12 +389,11 @@ elif st.session_state.pantalla == "examen":
             st.session_state.respuestas,
         )
         correctas = sum(1 for r in st.session_state.detalle if r["correcto"])
-        st.session_state.calificacion = (correctas / 5) * 10
-        guardar_calificacion(
+        st.session_state.calificacion = correctas * PUNTOS_POR_PREGUNTA
+        guardar_en_github(
             st.session_state.nombre,
             st.session_state.calificacion,
-            5,
-            st.session_state.detalle,
+            correctas,
         )
         st.session_state.pantalla = "resultado"
         st.rerun()
@@ -375,46 +405,48 @@ elif st.session_state.pantalla == "examen":
         unsafe_allow_html=True,
     )
 
-    # ── Info alumno ──
     st.markdown(
         f'<div class="alumno-info">👤 &nbsp;<strong>{st.session_state.nombre}</strong></div>',
         unsafe_allow_html=True,
     )
 
     # ── Preguntas ──
-    preguntas = st.session_state.preguntas_selec
-
-    for i, p in enumerate(preguntas):
-        st.markdown(f'<div class="pregunta-card">', unsafe_allow_html=True)
-        st.markdown(f'<span class="pregunta-num">Pregunta {i+1}</span>', unsafe_allow_html=True)
-        st.markdown(p["enunciado"])
-
-        pid = p["id"]
-        if p["tipo"] == "escritura":
-            val   = st.session_state.respuestas.get(pid, "")
-            nueva = st.text_input(
-                f"resp_{pid}",
-                value=val,
-                placeholder=p.get("placeholder", ""),
-                key=f"input_{pid}",
-                label_visibility="collapsed",
+    for i, p in enumerate(st.session_state.preguntas_selec):
+        with st.container():
+            st.markdown(
+                f'<div style="background:#ffffff; border:1px solid #dde3ea; border-radius:10px; '
+                f'padding:22px 26px; margin-bottom:18px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">'
+                f'<span style="display:inline-block; background:#2e8b57; color:#fff; font-weight:700; '
+                f'font-size:0.72rem; padding:3px 12px; border-radius:20px; margin-bottom:12px; '
+                f'letter-spacing:0.06em;">Pregunta {i+1}</span></div>',
+                unsafe_allow_html=True,
             )
-            st.session_state.respuestas[pid] = nueva
+            st.markdown(p["enunciado"])
 
-        else:
-            opciones = p["opciones"]
-            val      = st.session_state.respuestas.get(pid, None)
-            idx      = opciones.index(val) if val in opciones else None
-            sel      = st.radio(
-                f"opc_{pid}",
-                opciones,
-                index=idx,
-                key=f"radio_{pid}",
-                label_visibility="collapsed",
-            )
-            st.session_state.respuestas[pid] = sel
-
-        st.markdown("</div>", unsafe_allow_html=True)
+            pid = p["id"]
+            if p["tipo"] == "escritura":
+                val   = st.session_state.respuestas.get(pid, "")
+                nueva = st.text_input(
+                    f"resp_{pid}",
+                    value=val,
+                    placeholder=p.get("placeholder", ""),
+                    key=f"input_{pid}",
+                    label_visibility="collapsed",
+                )
+                st.session_state.respuestas[pid] = nueva
+            else:
+                opciones = p["opciones"]
+                val      = st.session_state.respuestas.get(pid, None)
+                idx      = opciones.index(val) if val in opciones else None
+                sel      = st.radio(
+                    f"opc_{pid}",
+                    opciones,
+                    index=idx,
+                    key=f"radio_{pid}",
+                    label_visibility="collapsed",
+                )
+                st.session_state.respuestas[pid] = sel
+            st.markdown("---")
 
     # ── Botón enviar ──
     st.markdown("<br>", unsafe_allow_html=True)
@@ -430,17 +462,15 @@ elif st.session_state.pantalla == "examen":
             st.session_state.respuestas,
         )
         correctas = sum(1 for r in st.session_state.detalle if r["correcto"])
-        st.session_state.calificacion = (correctas / 5) * 10
-        guardar_calificacion(
+        st.session_state.calificacion = correctas * PUNTOS_POR_PREGUNTA
+        guardar_en_github(
             st.session_state.nombre,
             st.session_state.calificacion,
-            5,
-            st.session_state.detalle,
+            correctas,
         )
         st.session_state.pantalla = "resultado"
         st.rerun()
 
-    # ── Refresh cada segundo ──
     time.sleep(1)
     st.rerun()
 
@@ -450,7 +480,6 @@ elif st.session_state.pantalla == "examen":
 # ════════════════════════════════════════════════════════════════════════════
 
 elif st.session_state.pantalla == "resultado":
-
     render_header()
 
     cal       = st.session_state.calificacion
@@ -461,14 +490,13 @@ elif st.session_state.pantalla == "resultado":
     st.markdown(f"""
     <div class="resultado-box">
       <div style="color:#888; font-size:0.78rem; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.08em;">Calificación final</div>
-      <div class="cal-numero {color}">{cal:.1f}<span style="font-size:1.8rem; color:#aaa;"> / 10</span></div>
+      <div class="cal-numero {color}">{cal:.0f}<span style="font-size:1.8rem; color:#aaa;"> / 10</span></div>
       <div style="margin:14px 0; font-size:0.95rem; color:#444;">
-        {emoji} &nbsp; {correctas} de 5 preguntas correctas
+        {emoji} &nbsp; {correctas} de {NUM_PREGUNTAS} preguntas correctas
       </div>
       <div style="color:#888; font-size:0.78rem;">
         Alumno: <strong>{st.session_state.nombre}</strong> &nbsp;·&nbsp;
-        Tiempo: {tiempo_str(st.session_state.tiempo_usado)} &nbsp;·&nbsp;
-        Guardado ✓
+        Tiempo: {tiempo_str(st.session_state.tiempo_usado)}
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -478,8 +506,8 @@ elif st.session_state.pantalla == "resultado":
 
     for i, r in enumerate(st.session_state.detalle):
         icono  = "✅" if r["correcto"] else "❌"
-        clase  = "detalle-ok"  if r["correcto"] else "detalle-mal"
-        estado = "Correcta"    if r["correcto"] else "Incorrecta"
+        clase  = "detalle-ok" if r["correcto"] else "detalle-mal"
+        estado = "Correcta"   if r["correcto"] else "Incorrecta"
         resp   = r["respuesta_alumno"] or "(sin respuesta)"
         st.markdown(
             f'<div class="detalle-item">'
@@ -490,18 +518,6 @@ elif st.session_state.pantalla == "resultado":
         )
 
     st.markdown("---")
-
-    # ── Descarga CSV ──
-    if os.path.isfile(CSV_PATH):
-        with open(CSV_PATH, "rb") as f:
-            st.download_button(
-                label="📥  Descargar calificaciones.csv",
-                data=f,
-                file_name="calificaciones.csv",
-                mime="text/csv",
-            )
-
-    st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         if st.button("🔄  Nuevo intento", use_container_width=True):
