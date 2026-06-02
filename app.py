@@ -46,7 +46,7 @@ PUNTOS_POR_PREGUNTA = 2   # 5 × 2 = 10
 #   None        → Los alumnos eligen (pantalla de selección)
 #   1           → Solo Examen 1 (directo a login)
 #   2           → Solo Examen 2 (directo a login)
-EXAMEN_FIJO = None  # Cambia aquí: None, 1 o 2
+EXAMEN_FIJO = 2 # Cambia aquí: None, 1 o 2
 
 # ── CSS global — tema claro ───────────────────────────────────────────────────
 st.markdown("""
