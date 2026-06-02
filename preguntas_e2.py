@@ -133,25 +133,19 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P8 — Operador OR (escritura) ────────────────────────
+    # ── P8 — Evaluar expresión booleana con OR (opción múltiple) ──────────────
     {
         "id": 8,
-        "tipo": "escritura",
+        "tipo": "opcion_multiple",
         "enunciado": (
-            "Escribe una expresión que devuelva `True` usando el operador `or`. "
-            "Considera `a = 5` y `b = 10`.\n\n"
-            "Escribe la línea completa de código:"
+            "¿Cuál es el resultado de esta expresión?\n\n"
+            "`10 != 5 or 6 > 5 and 3 < 1`"
         ),
-        "placeholder": "Tu respuesta aquí...",
-        "respuestas_validas": [
-            "a > 10 or b > 5",
-            "a>10 or b>5",
-            "a > 10 or b > 5",
-            "b > 5 or a > 10",
-            "b>5 or a>10",
-            "5 > 10 or 10 > 5",
-            "False or True",
+        "opciones": [
+            "True",
+            "False",
         ],
+        "respuesta_correcta": "True",
         "puntaje": 1,
     },
 
@@ -172,25 +166,20 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P10 — Booleano en variable (escritura) ──────────────
+    # ── P10 — Identificar expresión falsa (opción múltiple) ──────────────────
     {
         "id": 10,
-        "tipo": "escritura",
+        "tipo": "opcion_multiple",
         "enunciado": (
-            "Crea una variable `es_mayor` que sea `True` si la edad es mayor a 18. "
-            "Considera `edad = 20`.\n\n"
-            "Escribe la línea completa de código:"
+            "¿Cuál de las siguientes expresiones es **falsa**?"
         ),
-        "placeholder": "Tu respuesta aquí...",
-        "respuestas_validas": [
-            "es_mayor = edad > 18",
-            "es_mayor=edad>18",
-            "es_mayor = 20 > 18",
-            "es_mayor=20>18",
-            "es_mayor = edad>18",
-            "es_mayor > 18",
-            "es_mayor = True",
+        "opciones": [
+            "3 > 1 and 6 < 4 or not (2 == 2)",
+            "15 != 10 and 20 < 18",
+            "25 % 5 == 0",
+            "not False",
         ],
+        "respuesta_correcta": "15 != 10 and 20 < 18",
         "puntaje": 1,
     },
 ]

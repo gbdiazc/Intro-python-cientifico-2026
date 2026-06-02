@@ -46,7 +46,7 @@ PUNTOS_POR_PREGUNTA = 2   # 5 × 2 = 10
 #   None        → Los alumnos eligen (pantalla de selección)
 #   1           → Solo Examen 1 (directo a login)
 #   2           → Solo Examen 2 (directo a login)
-EXAMEN_FIJO = 2 # Cambia aquí: None, 1 o 2
+EXAMEN_FIJO = 2  # Cambia aquí: None, 1 o 2
 
 # ── CSS global — tema claro ───────────────────────────────────────────────────
 st.markdown("""
@@ -609,15 +609,20 @@ elif st.session_state.pantalla == "resultado":
         estado = "Correcta"   if r["correcto"] else "Incorrecta"
         resp_alumno = r["respuesta_alumno"] or "(sin respuesta)"
         resp_correcta = r.get("respuesta_correcta", "")
-        
-        # Mostrar pregunta (primeras líneas del enunciado)
-        enunciado_corto = r.get("enunciado", "").split("\n")[0][:80]
+        enunciado = r.get("enunciado", "")
         
         st.markdown(
-            f'<div style="margin-bottom:16px; padding:12px 16px; background:#f8f9fb; border-left:4px solid #2e8b57; border-radius:6px;">'
-            f'<div style="font-weight:600; margin-bottom:8px; color:#1a1a2e;">'
-            f'{icono} <span class="{clase}">Pregunta {i+1} — {estado}</span></div>'
-            f'<div style="font-size:0.85rem; color:#555; margin-bottom:8px;">{enunciado_corto}...</div>'
+            f'<div style="margin-bottom:18px; padding:12px 16px; background:#f8f9fb; border-left:4px solid #2e8b57; border-radius:6px;">'
+            f'<div style="font-weight:600; margin-bottom:10px; color:#1a1a2e;">'
+            f'{icono} <span class="{clase}">Pregunta {i+1} — {estado}</span></div>',
+            unsafe_allow_html=True,
+        )
+        
+        # Mostrar el enunciado de la pregunta
+        st.markdown(enunciado)
+        
+        st.markdown(
+            f'<div style="margin-top:10px; padding-top:10px; border-top:1px solid #dde3ea;">'
             f'<div style="font-size:0.82rem; margin-bottom:6px;">'
             f'<strong>Tu respuesta:</strong> <code style="background:#fff; padding:2px 6px; border-radius:3px;">{resp_alumno}</code>'
             f'</div>',
@@ -633,7 +638,7 @@ elif st.session_state.pantalla == "resultado":
                 unsafe_allow_html=True,
             )
         
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown("</div></div>", unsafe_allow_html=True)
 
     st.markdown("---")
     col1, col2, col3 = st.columns([1, 2, 1])
