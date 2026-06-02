@@ -7,18 +7,46 @@ import base64
 import json
 import requests
 from datetime import datetime
-from preguntas import PREGUNTAS
+
+# ── Cargar examen dinámicamente ──────────────────────────────────────────────
+def cargar_examen(numero_examen):
+    """Carga las preguntas y configuración del examen."""
+    if numero_examen == 1:
+        from preguntas_e1 import PREGUNTAS as PREG_E1
+        return {
+            "numero": 1,
+            "titulo": "Introducción a la programación en Python",
+            "preguntas": PREG_E1,
+            "csv": "calificaciones_e1.csv",
+        }
+    elif numero_examen == 2:
+        from preguntas_e2 import PREGUNTAS as PREG_E2
+        return {
+            "numero": 2,
+            "titulo": "Listas, Diccionarios, Operaciones, Booleanos y Operadores Lógicos",
+            "preguntas": PREG_E2,
+            "csv": "calificaciones_e2.csv",
+        }
+    else:
+        return None
 
 # ── Configuración de página ──────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Examen 1 — Python IMP",
+    page_title="Examen — Python IMP",
     page_icon="🧪",
     layout="centered",
 )
 
-TIEMPO_LIMITE = 10 * 60  # segundos
+TIEMPO_LIMITE = 10 * 60   # segundos
 NUM_PREGUNTAS = 5
 PUNTOS_POR_PREGUNTA = 2   # 5 × 2 = 10
+
+# ── CONFIGURACIÓN: Elige qué examen mostrar ─────────────────────────────────
+# Opciones:
+#   None        → Los alumnos eligen (pantalla de selección)
+#   1           → Solo Examen 1 (directo a login)
+#   2           → Solo Examen 2 (directo a login)
+EXAMEN_FIJO = None  # Cambia aquí: None, 1 o 2
 
 # ── CSS global — tema claro ───────────────────────────────────────────────────
 st.markdown("""
@@ -225,6 +253,10 @@ def color_timer(seg):
     return "timer-low"
 
 
+def normalizar(texto):
+    """Quita espacios extra internos y convierte a minúsculas para comparar."""
+    return " ".join(texto.lower().split())
+
 def calificar(preguntas, respuestas):
     detalle = []
     for p in preguntas:
@@ -232,26 +264,28 @@ def calificar(preguntas, respuestas):
         raw  = respuestas.get(pid, None)
         resp = (raw or "").strip()
         if p["tipo"] == "escritura":
-            correcto = resp in [v.strip() for v in p["respuestas_validas"]]
+            resp_norm = normalizar(resp)
+            correcto  = any(resp_norm == normalizar(v) for v in p["respuestas_validas"])
+            correcta  = p["respuestas_validas"][0]
         else:
             correcto = (resp == p["respuesta_correcta"]) if resp else False
+            correcta = p["respuesta_correcta"]
         detalle.append({
-            "id": pid,
-            "respuesta_alumno": resp,
-            "correcto": correcto,
+            "id":                pid,
+            "enunciado":         p["enunciado"],
+            "respuesta_alumno":  resp,
+            "respuesta_correcta": correcta,
+            "correcto":          correcto,
         })
     return detalle
 
 
 # ── GitHub: guardar CSV ───────────────────────────────────────────────────────
 
-def guardar_en_github(nombre, calificacion, correctas):
+def guardar_en_github(nombre, calificacion, correctas, detalle, csv_nombre="calificaciones.csv"):
     """
-    Guarda/actualiza calificaciones.csv en el repo de GitHub vía API.
-    Requiere en Streamlit Cloud → Settings → Secrets:
-      GH_TOKEN   → Personal Access Token con permiso 'repo'
-      GH_REPO    → usuario/nombre-repo  (p. ej. gbdiaz/examen-python)
-      GH_BRANCH  → rama (normalmente 'main')
+    Guarda/actualiza calificaciones en el repo de GitHub vía API.
+    Incluye todas las respuestas de cada alumno y las respuestas correctas.
     """
     try:
         token  = st.secrets["GH_TOKEN"]
@@ -261,16 +295,15 @@ def guardar_en_github(nombre, calificacion, correctas):
         st.warning(f"⚠️ No se encontraron los secrets de GitHub: {e}")
         return False
 
-    csv_path_gh = "calificaciones.csv"
+    csv_path_gh = csv_nombre
     api_url = f"https://api.github.com/repos/{repo}/contents/{csv_path_gh}"
     headers = {
         "Authorization": f"token {token}",
         "Accept": "application/vnd.github.v3+json",
     }
 
-    # Intentar hasta 3 veces (por si hay conflicto de sha entre alumnos simultáneos)
+    # Intentar hasta 3 veces
     for intento in range(3):
-        # 1. Leer versión actual
         sha = None
         contenido_actual = ""
         r = requests.get(api_url, headers=headers, params={"ref": branch})
@@ -282,23 +315,31 @@ def guardar_en_github(nombre, calificacion, correctas):
             st.warning(f"⚠️ Error al leer GitHub ({r.status_code}): {r.text}")
             return False
 
-        # 2. Construir nueva fila
-        nueva_fila = (
-            f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")},'
-            f'"{nombre}",'
-            f'{calificacion:.0f},'
-            f'{correctas},'
-            f'{NUM_PREGUNTAS},'
-            f'{tiempo_str(st.session_state.get("tiempo_usado", 0))}\n'
-        )
-
+        # Construir fila con todas las respuestas
+        # Formato: Fecha,Nombre,Calificacion,Correctas,Total,Tiempo,P1_alumno,P1_correcta,P1_ok,P2_alumno,P2_correcta,P2_ok,...
+        
         if not contenido_actual:
-            contenido_actual = "Fecha,Nombre,Calificacion,Correctas,Total,Tiempo\n"
+            # Crear encabezado
+            encabezado = "Fecha,Nombre,Calificacion,Correctas,Total,Tiempo"
+            for i in range(1, NUM_PREGUNTAS + 1):
+                encabezado += f",P{i}_alumno,P{i}_correcta,P{i}_ok"
+            contenido_actual = encabezado + "\n"
 
+        # Construir fila de datos
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        nueva_fila = f'"{timestamp}","{nombre}",{calificacion:.0f},{correctas},{NUM_PREGUNTAS},{tiempo_str(st.session_state.get("tiempo_usado", 0))}'
+        
+        for d in detalle:
+            resp_alumno = d["respuesta_alumno"].replace('"', '""')  # Escapar comillas
+            resp_correcta = d["respuesta_correcta"].replace('"', '""')
+            ok = "1" if d["correcto"] else "0"
+            nueva_fila += f',"{resp_alumno}","{resp_correcta}",{ok}'
+        
+        nueva_fila += "\n"
         nuevo_contenido = contenido_actual + nueva_fila
         contenido_b64   = base64.b64encode(nuevo_contenido.encode("utf-8")).decode("utf-8")
 
-        # 3. PUT
+        # PUT
         payload = {
             "message": f"Calificacion: {nombre} — {calificacion:.0f}/10",
             "content": contenido_b64,
@@ -312,7 +353,6 @@ def guardar_en_github(nombre, calificacion, correctas):
         if r2.status_code in (200, 201):
             return True
         elif r2.status_code == 409 and intento < 2:
-            # Conflicto de sha — otro alumno guardó al mismo tiempo, reintentar
             time.sleep(1)
             continue
         else:
@@ -326,7 +366,9 @@ def guardar_en_github(nombre, calificacion, correctas):
 
 def init_state():
     defaults = {
-        "pantalla":        "login",
+        "pantalla":        "seleccionar_examen" if EXAMEN_FIJO is None else "login",
+        "numero_examen":   EXAMEN_FIJO,
+        "examen_config":   cargar_examen(EXAMEN_FIJO) if EXAMEN_FIJO else None,
         "nombre":          "",
         "preguntas_selec": [],
         "respuestas":      {},
@@ -341,6 +383,52 @@ def init_state():
             st.session_state[k] = v
 
 init_state()
+
+
+# ════════════════════════════════════════════════════════════════════════════
+#  PANTALLA 0 — SELECCIONAR EXAMEN (solo si EXAMEN_FIJO es None)
+# ════════════════════════════════════════════════════════════════════════════
+
+if EXAMEN_FIJO is None and st.session_state.pantalla == "seleccionar_examen":
+    render_header()
+    
+    st.markdown('<div class="login-box">', unsafe_allow_html=True)
+    st.markdown("#### 🎓 ¿Cuál examen deseas presentar?")
+    st.markdown("")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown(
+            '<div style="background:#f0f9f4; border:2px solid #2e8b57; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">'
+            '<div style="font-size:2rem; margin-bottom:8px;">📖</div>'
+            '<div style="font-weight:600; color:#2e8b57; margin-bottom:4px;">Examen 1</div>'
+            '<div style="font-size:0.85rem; color:#555;">Introducción a Python</div>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+        if st.button("Seleccionar", key="btn_e1", use_container_width=True):
+            st.session_state.numero_examen = 1
+            st.session_state.examen_config = cargar_examen(1)
+            st.session_state.pantalla = "login"
+            st.rerun()
+    
+    with col2:
+        st.markdown(
+            '<div style="background:#eef2f7; border:2px solid #58a6ff; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">'
+            '<div style="font-size:2rem; margin-bottom:8px;">📊</div>'
+            '<div style="font-weight:600; color:#58a6ff; margin-bottom:4px;">Examen 2</div>'
+            '<div style="font-size:0.85rem; color:#555;">Listas, Diccionarios, Operadores</div>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+        if st.button("Seleccionar", key="btn_e2", use_container_width=True):
+            st.session_state.numero_examen = 2
+            st.session_state.examen_config = cargar_examen(2)
+            st.session_state.pantalla = "login"
+            st.rerun()
+    
+    st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -371,7 +459,7 @@ if st.session_state.pantalla == "login":
             st.error("⚠️  Por favor ingresa tu nombre antes de continuar.")
         else:
             st.session_state.nombre          = nombre.strip()
-            st.session_state.preguntas_selec = random.sample(PREGUNTAS, NUM_PREGUNTAS)
+            st.session_state.preguntas_selec = random.sample(st.session_state.examen_config["preguntas"], NUM_PREGUNTAS)
             st.session_state.respuestas      = {}
             st.session_state.inicio_ts       = time.time()
             st.session_state.enviado         = False
@@ -403,6 +491,8 @@ elif st.session_state.pantalla == "examen":
             st.session_state.nombre,
             st.session_state.calificacion,
             correctas,
+            st.session_state.detalle,
+            st.session_state.examen_config["csv"],
         )
         st.session_state.pantalla = "resultado"
         st.rerun()
@@ -474,6 +564,8 @@ elif st.session_state.pantalla == "examen":
             st.session_state.nombre,
             st.session_state.calificacion,
             correctas,
+            st.session_state.detalle,
+            st.session_state.examen_config["csv"],
         )
         st.session_state.pantalla = "resultado"
         st.rerun()
@@ -515,19 +607,41 @@ elif st.session_state.pantalla == "resultado":
         icono  = "✅" if r["correcto"] else "❌"
         clase  = "detalle-ok" if r["correcto"] else "detalle-mal"
         estado = "Correcta"   if r["correcto"] else "Incorrecta"
-        resp   = r["respuesta_alumno"] or "(sin respuesta)"
+        resp_alumno = r["respuesta_alumno"] or "(sin respuesta)"
+        resp_correcta = r.get("respuesta_correcta", "")
+        
+        # Mostrar pregunta (primeras líneas del enunciado)
+        enunciado_corto = r.get("enunciado", "").split("\n")[0][:80]
+        
         st.markdown(
-            f'<div class="detalle-item">'
-            f'{icono} <span class="{clase}">Pregunta {i+1} — {estado}</span>'
-            f'&nbsp;&nbsp;·&nbsp;&nbsp;Tu respuesta: <code>{resp}</code>'
+            f'<div style="margin-bottom:16px; padding:12px 16px; background:#f8f9fb; border-left:4px solid #2e8b57; border-radius:6px;">'
+            f'<div style="font-weight:600; margin-bottom:8px; color:#1a1a2e;">'
+            f'{icono} <span class="{clase}">Pregunta {i+1} — {estado}</span></div>'
+            f'<div style="font-size:0.85rem; color:#555; margin-bottom:8px;">{enunciado_corto}...</div>'
+            f'<div style="font-size:0.82rem; margin-bottom:6px;">'
+            f'<strong>Tu respuesta:</strong> <code style="background:#fff; padding:2px 6px; border-radius:3px;">{resp_alumno}</code>'
             f'</div>',
             unsafe_allow_html=True,
         )
+        
+        if not r["correcto"] and resp_correcta:
+            st.markdown(
+                f'<div style="font-size:0.82rem;">'
+                f'<strong style="color:#2e8b57;">Respuesta correcta:</strong> '
+                f'<code style="background:#f0f9f4; padding:2px 6px; border-radius:3px; color:#2e8b57;">{resp_correcta}</code>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+        
+        st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("---")
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         if st.button("🔄  Nuevo intento", use_container_width=True):
-            for key in list(st.session_state.keys()):
-                del st.session_state[key]
+            pantalla_destino = "login" if EXAMEN_FIJO else "seleccionar_examen"
+            st.session_state.pantalla = pantalla_destino
+            st.session_state.nombre = ""
+            st.session_state.respuestas = {}
+            st.session_state.enviado = False
             st.rerun()
