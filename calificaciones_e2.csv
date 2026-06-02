@@ -1,2 +1,9 @@
 Fecha,Nombre,Calificacion,Correctas,Total,Tiempo,P1_alumno,P1_correcta,P1_ok,P2_alumno,P2_correcta,P2_ok,P3_alumno,P3_correcta,P3_ok,P4_alumno,P4_correcta,P4_ok,P5_alumno,P5_correcta,P5_ok
 "2026-06-02 20:21:06","Gaby Diaz",2,1,5,00:24,"resultado = float(""27.5"")","persona = {""nombre"": ""Ana"", ""edad"": 25}",0,"valor = dict[""color""]","valor = dict[""color""]",1,"mayus=palabra.upper()","x = lista[2]",0,"n=int(42)","es_mayor = edad > 18",0,"a=str('Estamos en el Instituto Mexicano')","numeros = [1, 2, 3, 4, 5]",0
+"2026-06-02 20:30:13","Gaby Diaz",4,2,5,00:29,"valor = dict[""color""]","valor = dict[""color""]",1,"resultado = float(""27.5"")","x = lista[2]",0,"True","False",0,"True and True","True and True",1,"mayus=palabra.upper()","es_mayor = edad > 18",0
+"2026-06-02 20:43:42","Luigi",6,3,5,10:00,"False","False",1,"2","2",1,"","es_mayor = edad > 18",0,"True and True","True and True",1,"a=5, b=10,","a > 10 or b > 5",0
+"2026-06-02 20:47:28","Gaby Diaz",0,0,5,10:00,"resultado = float(""27.5"")","x = lista[2]",0,"mayus=palabra.upper()","lista.append(4)",0,"n=int(42)","a > 10 or b > 5",0,"","2",0,"","es_mayor = edad > 18",0
+"2026-06-02 20:56:54","Pepito",8,4,5,04:02,"False","False",1,"","a > 10 or b > 5",0,"True and True","True and True",1,"persona = {""nombre"": ""Ana"", ""edad"": 25}","persona = {""nombre"": ""Ana"", ""edad"": 25}",1,"x=lista[2]","x = lista[2]",1
+"2026-06-02 20:58:37","Pedrito",6,3,5,01:20,"valor = dict[""color""]","valor = dict[""color""]",1,"a>b or a==b","a > 10 or b > 5",0,"","es_mayor = edad > 18",0,"False","False",1,"True and True","True and True",1
+"2026-06-02 21:05:06","polo",2,1,5,00:15,"2","2",1,"","es_mayor = edad > 18",0,"","False",0,"","True and True",0,"","lista.append(4)",0
+"2026-06-02 22:26:30","Pedro RM",0,0,5,10:00,"","True and True",0,"","False",0,"","numeros = [1, 2, 3, 4, 5]",0,"","2",0,"","persona = {""nombre"": ""Ana"", ""edad"": 25}",0
