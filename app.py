@@ -216,13 +216,25 @@ hr { border-color: #e8ecf0 !important; margin: 20px 0 !important; }
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
+def fecha_en_espanol(dt):
+    """Convierte datetime a formato: 'X de [mes] de YYYY' en español."""
+    meses = {
+        1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril",
+        5: "Mayo", 6: "Junio", 7: "Julio", 8: "Agosto",
+        9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
+    }
+    return f"{dt.day} de {meses[dt.month]} de {dt.year}"
+
 def render_header():
-    st.markdown("""
+    numero_examen = st.session_state.get("numero_examen", 1)
+    fecha_hoy = fecha_en_espanol(datetime.now())
+    
+    st.markdown(f"""
     <div style="background-color:#f2f2f2; border-left: 8px solid #2e8b57; padding: 20px; border-radius: 10px; font-family: Arial, sans-serif; margin-bottom: 24px;">
       <center>
         <h1 style="color:#2e8b57;">Introducción a la programación en Python</h1>
         <h2 style="color:#2e8b57;">Instituto Mexicano del Petróleo</h2>
-        <h3 style="color:#2e8b57;">Examen 1 &nbsp;·&nbsp; 2 de Junio de 2026</h3>
+        <h3 style="color:#2e8b57;">Examen {numero_examen}  ·  {fecha_hoy}</h3>
         <p style="font-size:16px; color:#333;">
           <strong>Dra. Gabriela Berenice Díaz Cortés</strong><br>
           <em>gbdiaz@imp.mx</em>
