@@ -133,19 +133,20 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P8 — Evaluar expresión booleana con OR (opción múltiple) ──────────────
+    # ── P8 — Operador OR (opción múltiple) ──────────────────────────────────
     {
         "id": 8,
         "tipo": "opcion_multiple",
         "enunciado": (
-            "¿Cuál es el resultado de esta expresión?\n\n"
-            "`10 != 5 or 6 > 5 and 3 < 1`"
+            "Considerando `a = 5` y `b = 10`, ¿cuál expresión devuelve **`True`**?"
         ),
         "opciones": [
-            "True",
-            "False",
+            "a > 10 or b > 20",
+            "a > 10 or b > 5",
+            "a > 8 or b < 5",
+            "a > 5 or b < 10",
         ],
-        "respuesta_correcta": "True",
+        "respuesta_correcta": "a > 10 or b > 5",
         "puntaje": 1,
     },
 
