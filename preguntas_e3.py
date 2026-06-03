@@ -10,61 +10,57 @@ PREGUNTAS = [
         "id": 1,
         "tipo": "escritura",
         "enunciado": (
-            "Completa el código con `elif` y `else`:\n\n"
+            "Completa el código:\n\n"
             "```python\n"
             "edad = 15\n"
             "if edad >= 18:\n"
-            "    print(\"Mayor\")\n"
+            "    print(\"Adulto\")\n"
             "______ edad >= 13:\n"
             "    print(\"Adolescente\")\n"
             "______:\n"
             "    print(\"Niño\")\n"
             "```\n\n"
-            "Escribe las dos líneas que faltan (con indentación):"
+            "Escribe las dos líneas que faltan:"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             "elif edad >= 13:\nelse:",
             "elif edad>=13:\nelse:",
-            "elif edad >= 13 :\nelse :",
         ],
         "puntaje": 1,
     },
 
-    # ── P2 — Opción múltiple IF-ELSE ────────────────────────
+    # ── P2 — Opción múltiple IF-ELIF-ELSE con calificaciones 
     {
         "id": 2,
         "tipo": "opcion_multiple",
         "enunciado": (
-            "¿Cuál código verifica si un número es positivo o negativo?"
+            "¿Cuál código verifica si una calificación es A (90+), B (80-89), C (70-79) o F (<70)?"
         ),
         "opciones": [
-            'if numero > 0: print("positivo") else: print("negativo")',
-            'if numero >= 0: print("positivo") else: print("negativo")',
-            'if numero == 0: print("cero")',
-            'if numero < 0: print("negativo")',
+            "if cal >= 90: print(\"A\")\nelse: print(\"B\")",
+            "if cal >= 90: print(\"A\")\nelif cal >= 80: print(\"B\")\nelif cal >= 70: print(\"C\")\nelse: print(\"F\")",
+            "if cal == 90: print(\"A\")",
+            "if cal > 70: print(\"A\")",
         ],
-        "respuesta_correcta": 'if numero > 0: print("positivo") else: print("negativo")',
+        "respuesta_correcta": "if cal >= 90: print(\"A\")\nelif cal >= 80: print(\"B\")\nelif cal >= 70: print(\"C\")\nelse: print(\"F\")",
         "puntaje": 1,
     },
 
-    # ── P3 — Escribir código ELIF ───────────────────────────
+    # ── P3 — Opción múltiple IF-ELIF-ELSE ───────────────────
     {
         "id": 3,
-        "tipo": "escritura",
+        "tipo": "opcion_multiple",
         "enunciado": (
-            "Escribe código que diga si una calificación es:\n"
-            "- A si es 90 o más\n"
-            "- B si es 80 a 89\n"
-            "- C si es 70 a 79\n"
-            "- F si es menor a 70\n\n"
-            "Considera `calificacion = 85`"
+            "¿Cuál código verifica si un número es positivo, negativo o cero?"
         ),
-        "placeholder": "Tu respuesta aquí...",
-        "respuestas_validas": [
-            "if calificacion >= 90:\n    print(\"A\")\nelif calificacion >= 80:\n    print(\"B\")\nelif calificacion >= 70:\n    print(\"C\")\nelse:\n    print(\"F\")",
-            "if calificacion>=90:\n    print(\"A\")\nelif calificacion>=80:\n    print(\"B\")\nelif calificacion>=70:\n    print(\"C\")\nelse:\n    print(\"F\")",
+        "opciones": [
+            "if numero > 0:\n    print(\"positivo\")\nelse:\n    print(\"negativo\")",
+            "if numero > 0:\n    print(\"positivo\")\nelif numero < 0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
+            "if numero == 0:\n    print(\"cero\")",
+            "if numero < 0:\n    print(\"negativo\")",
         ],
+        "respuesta_correcta": "if numero > 0:\n    print(\"positivo\")\nelif numero < 0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
         "puntaje": 1,
     },
 
@@ -85,7 +81,6 @@ PREGUNTAS = [
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             "<= 5",
-            "<= 5",
             "< 6",
         ],
         "puntaje": 1,
@@ -99,12 +94,12 @@ PREGUNTAS = [
             "¿Cuál código imprime números del 1 al 5 usando `while`?"
         ),
         "opciones": [
-            "while i < 5: print(i); i += 1",
-            "while i <= 5: print(i); i += 1",
-            "while i >= 5: print(i); i += 1",
-            "while True: print(i); i += 1",
+            "while i < 5:\n    print(i)\n    i += 1",
+            "while i <= 5:\n    print(i)\n    i += 1",
+            "while i >= 5:\n    print(i)\n    i += 1",
+            "while True:\n    print(i)\n    i += 1",
         ],
-        "respuesta_correcta": "while i <= 5: print(i); i += 1",
+        "respuesta_correcta": "while i <= 5:\n    print(i)\n    i += 1",
         "puntaje": 1,
     },
 
@@ -125,7 +120,7 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P7 — Completar AND/OR ───────────────────────────────
+    # ── P7 — Completar AND ───────────────────────────────────
     {
         "id": 7,
         "tipo": "escritura",
@@ -169,24 +164,24 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P9 — Escribir WHILE + IF ────────────────────────────
+    # ── P9 — Escribir WHILE desde 0, impares ────────────────
     {
         "id": 9,
         "tipo": "escritura",
         "enunciado": (
-            "Escribe un `while` que incremente `i` desde 1 hasta que sea mayor a 3.\n"
+            "Escribe un `while` que incremente `i` desde 0 hasta que sea mayor a 3.\n"
             "Imprime solo si `i` es impar."
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
-            "i = 1\nwhile i <= 3:\n    if i % 2 != 0:\n        print(i)\n    i += 1",
-            "i=1\nwhile i<=3:\n    if i%2!=0:\n        print(i)\n    i+=1",
-            "i = 1\nwhile i <= 3:\n    if i % 2 == 1:\n        print(i)\n    i += 1",
+            "i = 0\nwhile i <= 3:\n    if i % 2 != 0:\n        print(i)\n    i += 1",
+            "i=0\nwhile i<=3:\n    if i%2!=0:\n        print(i)\n    i+=1",
+            "i = 0\nwhile i <= 3:\n    if i % 2 == 1:\n        print(i)\n    i += 1",
         ],
         "puntaje": 1,
     },
 
-    # ── P10 — Valor final de variable en WHILE ──────────────
+    # ── P10 — Valor final en WHILE ──────────────────────────
     {
         "id": 10,
         "tipo": "escritura",
