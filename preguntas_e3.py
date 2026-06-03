@@ -96,7 +96,7 @@ PREGUNTAS = [
             "i = 1\nwhile i < 5:\n    print(i)\n    i += 1",
             "i = 1\nwhile i <= 5:\n    print(i)\n    i += 1",
             "i = 1\nwhile i >= 5:\n    print(i)\n    i += 1",
-            "while True:\n    print(i)\n    i += 1",
+            "i = 1\nwhile True:\n    print(i)\n    i += 1",
         ],
         "respuesta_correcta": "i = 1\nwhile i <= 5:\n    print(i)\n    i += 1",
         "puntaje": 1,
@@ -164,19 +164,26 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P9 — Escribir WHILE con condición clara ────────────
+    # ── P9 — Escribir bloque IF dentro de WHILE ────────────
     {
         "id": 9,
         "tipo": "escritura",
         "enunciado": (
-            "Escribe un `while` que imprima solo los números impares desde 0 hasta 3 (inclusive).\n\n"
-            "Resultado esperado: imprime 1 y 3"
+            "Escribe el bloque `if` y `print` que falta para que imprima solo números impares:\n\n"
+            "```python\n"
+            "i = 0\n"
+            "while i <= 3:\n"
+            "    _______\n"
+            "    i += 1\n"
+            "```\n\n"
+            "Escribe las 2 líneas que van en el espacio en blanco:"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
-            "i = 0\nwhile i <= 3:\n    if i % 2 != 0:\n        print(i)\n    i += 1",
-            "i=0\nwhile i<=3:\n    if i%2!=0:\n        print(i)\n    i+=1",
-            "i = 0\nwhile i <= 3:\n    if i % 2 == 1:\n        print(i)\n    i += 1",
+            "if i % 2 != 0:\n        print(i)",
+            "if i%2!=0:\n        print(i)",
+            "if i % 2 == 1:\n        print(i)",
+            "if i%2==1:\n        print(i)",
         ],
         "puntaje": 1,
     },
