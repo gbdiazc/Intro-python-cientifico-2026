@@ -135,19 +135,73 @@ PREGUNTAS = [
         ),
         "placeholder": "Tu respuesta aquí...",
 "respuestas_validas": [
+    # IF anidado - comillas dobles
     "if numero > 0:\n    if numero % 2 == 0:\n        print(\"válido\")",
     "if numero>0:\n    if numero%2==0:\n        print(\"válido\")",
-    "if numero > 0 and numero % 2 == 0:\n    print(\"válido\")",
-    "if numero > 0:\n    if numero % 2 == 0 :\n        print(\"válido\")",
+    "if numero > 0 :\n    if numero % 2 == 0 :\n        print(\"válido\")",
     "if numero > 0:\n  if numero % 2 == 0:\n    print(\"válido\")",
-    "if numero > 0 and numero % 2 == 0 :\n    print(\"válido\")",
-    "if numero%4==0 and numero>0:\n    print(\"válido\")",
-    "if numero > 0 and numero % 2 != 1:\n    print(\"válido\")",
-    "if numero >= 1 and numero % 2 == 0:\n    print(\"válido\")",
-    "if numero > 0:\n    if numero % 2 == 0:\n        print( \"válido\" )",
+    
+    # IF anidado - comillas simples
+    "if numero > 0:\n    if numero % 2 == 0:\n        print('válido')",
+    "if numero>0:\n    if numero%2==0:\n        print('válido')",
+    "if numero > 0:\n  if numero % 2 == 0:\n    print('válido')",
+    
+    # IF anidado - Orden invertido (comillas dobles)
     "if numero % 2 == 0:\n    if numero > 0:\n        print(\"válido\")",
+    "if numero%2==0:\n    if numero>0:\n        print(\"válido\")",
+    
+    # IF anidado - Orden invertido (comillas simples)
+    "if numero % 2 == 0:\n    if numero > 0:\n        print('válido')",
+    "if numero%2==0:\n    if numero>0:\n        print('válido')",
+    
+    # IF con AND - comillas dobles
+    "if numero > 0 and numero % 2 == 0:\n    print(\"válido\")",
+    "if numero>0 and numero%2==0:\n    print(\"válido\")",
+    "if numero > 0 and numero % 2 == 0 :\n    print(\"válido\")",
+    
+    # IF con AND - comillas simples
+    "if numero > 0 and numero % 2 == 0:\n    print('válido')",
+    "if numero>0 and numero%2==0:\n    print('válido')",
+    
+    # IF con AND - Orden invertido (comillas dobles)
     "if numero % 2 == 0 and numero > 0:\n    print(\"válido\")",
-    "if (numero % 2) == 0 and numero > 0:\n    print(\"válido\")",
+    "if numero%2==0 and numero>0:\n    print(\"válido\")",
+    
+    # IF con AND - Orden invertido (comillas simples)
+    "if numero % 2 == 0 and numero > 0:\n    print('válido')",
+    "if numero%2==0 and numero>0:\n    print('válido')",
+    
+    # Con != 1 (comillas dobles)
+    "if numero > 0 and numero % 2 != 1:\n    print(\"válido\")",
+    "if numero % 2 != 1 and numero > 0:\n    print(\"válido\")",
+    
+    # Con != 1 (comillas simples)
+    "if numero > 0 and numero % 2 != 1:\n    print('válido')",
+    "if numero % 2 != 1 and numero > 0:\n    print('válido')",
+    
+    # Con >= 1 (comillas dobles)
+    "if numero >= 1 and numero % 2 == 0:\n    print(\"válido\")",
+    "if numero % 2 == 0 and numero >= 1:\n    print(\"válido\")",
+    
+    # Con >= 1 (comillas simples)
+    "if numero >= 1 and numero % 2 == 0:\n    print('válido')",
+    "if numero % 2 == 0 and numero >= 1:\n    print('válido')",
+    
+    # Con paréntesis (comillas dobles)
+    "if (numero > 0) and (numero % 2 == 0):\n    print(\"válido\")",
+    "if numero > 0 and (numero % 2 == 0):\n    print(\"válido\")",
+    
+    # Con paréntesis (comillas simples)
+    "if (numero > 0) and (numero % 2 == 0):\n    print('válido')",
+    "if numero > 0 and (numero % 2 == 0):\n    print('válido')",
+    
+    # Espacios en print (comillas dobles)
+    "if numero > 0:\n    if numero % 2 == 0:\n        print( \"válido\" )",
+    "if numero > 0 and numero % 2 == 0:\n    print( \"válido\" )",
+    
+    # Espacios en print (comillas simples)
+    "if numero > 0:\n    if numero % 2 == 0:\n        print( 'válido' )",
+    "if numero > 0 and numero % 2 == 0:\n    print( 'válido' )",
 ],
         "puntaje": 1,
     },
