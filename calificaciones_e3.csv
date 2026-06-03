@@ -90,3 +90,9 @@ while i <= 5:
 while temperatura < 20:
     print(temperatura)
     temperatura += 1",0,"<="," < = ",1
+"2026-06-03 22:24:42","PP",4,2,5,01:05,"or","and",0,"<="," < = ",1,"","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"Menor","Menor",1,"if edad >=18:
+elif edad<18 and edad >= 13","if edad >= 18:
+elif edad >= 13:",0
