@@ -58,3 +58,20 @@ else:",0
     print(""válido"")","if numero > 0:
     if numero % 2 == 0:
         print(""válido"")",0,"10","10",1,"and","and",1
+"2026-06-03 19:57:05","p",2,1,5,01:54,"","if numero > 0:
+    print(""positivo"")
+elif numero < 0:
+    print(""negativo"")
+else:
+    print(""cero"")",0,"elif
+else","elif edad >= 13:
+else:",0,"if i%2 == 1:
+   print(i)","if i % 2 != 0:
+        print(i)",0,"","if cal >= 90:
+    print(""A"")
+elif cal >= 80:
+    print(""B"")
+elif cal >= 70:
+    print(""C"")
+else:
+    print(""F"")",0,"and","and",1
