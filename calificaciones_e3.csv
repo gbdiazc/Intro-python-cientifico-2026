@@ -22,3 +22,15 @@ elif numero < 0:
     print(""negativo"")
 else:
     print(""cero"")",0,"and","and",1,"10","10",1
+"2026-06-03 19:30:14","gaby",4,2,5,03:00,"i = 0
+while i<5:
+   if i%2 == 1:
+      print(i)","i = 0
+while i <= 3:
+    if i % 2 != 0:
+        print(i)
+    i += 1",0,"Menor","Menor",1,"elif
+if","elif edad >= 13:
+else:",0,"","while i <= 5:
+    print(i)
+    i += 1",0,"10","10",1
