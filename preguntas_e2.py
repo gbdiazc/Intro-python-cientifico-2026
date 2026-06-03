@@ -133,7 +133,7 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P8 — Operador OR (opción múltiple) ──────────────────────────────────
+    # ── P8 — Operador OR (opción múltiple) ──────────────────────────────
     {
         "id": 8,
         "tipo": "opcion_multiple",
@@ -175,7 +175,7 @@ PREGUNTAS = [
             "¿Cuál de las siguientes expresiones es **falsa**?"
         ),
         "opciones": [
-            "3 > 1 and 6 < 4 or not (2 == 2)",
+            "3 > 1 and 6 > 4 or not (2 == 2)",
             "15 != 10 and 20 < 18",
             "25 % 5 == 0",
             "not False",
