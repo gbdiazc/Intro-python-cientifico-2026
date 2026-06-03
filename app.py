@@ -599,22 +599,12 @@ elif st.session_state.pantalla == "examen":
                     else:
                         st.markdown(f"**{chr(97+i)})** `{opc}`")
                 
-                # Selector de respuesta - SIN opción predefinida
-                # Mostrar contenido de opción (primera línea si es código, todo si es texto)
-                def get_label(x):
-                    opc = opciones[x]
-                    if '\n' in opc:
-                        # Para código, mostrar primera línea
-                        return opc.split('\n')[0]
-                    else:
-                        # Para texto, mostrar todo
-                        return opc
-                
+                # Selector de respuesta - mostrar a), b), c), d)
                 idx = opciones.index(val) if val in opciones else None
                 sel = st.radio(
                     f"opc_{pid}",
                     range(len(opciones)),
-                    format_func=get_label,
+                    format_func=lambda x: f"{chr(97+x)})",
                     index=None,
                     key=f"radio_{pid}",
                     label_visibility="collapsed",
