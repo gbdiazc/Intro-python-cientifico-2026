@@ -233,6 +233,7 @@ PREGUNTAS = [
         "enunciado": (
             "¿Cuál es el valor final de `x` después de ejecutar este código?\n\n"
             "```python\n"
+            " \n"
             "x = 0\n"
             "i = 1\n"
             "while i <= 4:\n"
