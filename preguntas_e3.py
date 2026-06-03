@@ -47,20 +47,19 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P3 — Opción múltiple IF-ELIF-ELSE ───────────────────
+    # ── P3 — Escribir código IF-ELIF-ELSE ──────────────────
     {
         "id": 3,
-        "tipo": "opcion_multiple",
+        "tipo": "escritura",
         "enunciado": (
-            "¿Cuál código clasifica un número como positivo, negativo o cero?"
+            "Escribe código que imprima 'positivo', 'negativo' o 'cero' según el número.\n\n"
+            "Considera `numero = 5`"
         ),
-        "opciones": [
-            "if numero > 0:\n    print(\"positivo\")\nelse:\n    print(\"negativo\")",
+        "placeholder": "Tu respuesta aquí...",
+        "respuestas_validas": [
             "if numero > 0:\n    print(\"positivo\")\nelif numero < 0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
-            "if numero == 0:\n    print(\"cero\")",
-            "if numero < 0:\n    print(\"negativo\")",
+            "if numero>0:\n    print(\"positivo\")\nelif numero<0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
         ],
-        "respuesta_correcta": "if numero > 0:\n    print(\"positivo\")\nelif numero < 0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
         "puntaje": 1,
     },
 
@@ -94,12 +93,12 @@ PREGUNTAS = [
             "¿Cuál código imprime números del 1 al 5 usando `while`?"
         ),
         "opciones": [
-            "while i < 5:\n    print(i)\n    i += 1",
-            "while i <= 5:\n    print(i)\n    i += 1",
-            "while i >= 5:\n    print(i)\n    i += 1",
+            "i = 1\nwhile i < 5:\n    print(i)\n    i += 1",
+            "i = 1\nwhile i <= 5:\n    print(i)\n    i += 1",
+            "i = 1\nwhile i >= 5:\n    print(i)\n    i += 1",
             "while True:\n    print(i)\n    i += 1",
         ],
-        "respuesta_correcta": "while i <= 5:\n    print(i)\n    i += 1",
+        "respuesta_correcta": "i = 1\nwhile i <= 5:\n    print(i)\n    i += 1",
         "puntaje": 1,
     },
 

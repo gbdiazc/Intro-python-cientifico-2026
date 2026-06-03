@@ -584,27 +584,29 @@ elif st.session_state.pantalla == "examen":
             else:
                 opciones = p["opciones"]
                 val      = st.session_state.respuestas.get(pid, None)
-                idx      = opciones.index(val) if val in opciones else None
                 
                 # Mostrar opciones formateadas si contienen código
                 st.markdown("**Opciones:**")
                 for i, opc in enumerate(opciones):
                     # Si contiene saltos de línea, mostrar como bloque de código
                     if '\n' in opc:
-                        st.markdown(f"**{chr(97+i)})** ")  # a), b), c), etc
+                        st.markdown(f"**{chr(97+i)})**")
                         st.code(opc, language="python")
                     else:
                         st.markdown(f"**{chr(97+i)})** `{opc}`")
                 
-                # Selector de respuesta
+                # Selector de respuesta - SIN opción predefinida
+                idx = opciones.index(val) if val in opciones else None
                 sel = st.radio(
                     f"opc_{pid}",
                     range(len(opciones)),
-                    format_func=lambda x: f"Opción {chr(97+x)}",
+                    format_func=lambda x: f"{chr(97+x)}",
+                    index=None,
                     key=f"radio_{pid}",
                     label_visibility="collapsed",
                 )
-                st.session_state.respuestas[pid] = opciones[sel]
+                if sel is not None:
+                    st.session_state.respuestas[pid] = opciones[sel]
             st.markdown("---")
 
     # ── Botón enviar ──
