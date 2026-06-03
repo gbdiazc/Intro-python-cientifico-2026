@@ -78,3 +78,15 @@ while temperatura <=19:
 while temperatura < 20:
     print(temperatura)
     temperatura += 1",0,"10","10",1,"if num%4==0","if num % 4 == 0:",0,"and","and",1
+"2026-06-03 22:23:00","Padrino",6,3,5,01:17,"Menor","Menor",1,"if edad >= 18:
+elif edad>18 and edad >= 13:","if edad >= 18:
+elif edad >= 13:",0,"i = 1
+while i <= 5:
+    print(i)
+    i += 1","i = 1
+while i <= 5:
+    print(i)
+    i += 1",1,"","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"<="," < = ",1
