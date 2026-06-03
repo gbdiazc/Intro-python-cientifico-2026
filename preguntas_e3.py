@@ -10,7 +10,7 @@ PREGUNTAS = [
         "id": 1,
         "tipo": "escritura",
         "enunciado": (
-            "Completa el código:\n\n"
+            "Completa el código que clasifica por edad:\n\n"
             "```python\n"
             "edad = 15\n"
             "if edad >= 18:\n"
@@ -20,7 +20,7 @@ PREGUNTAS = [
             "______:\n"
             "    print(\"Niño\")\n"
             "```\n\n"
-            "Escribe las dos líneas que faltan:"
+            "Escribe las dos líneas que faltan (sin 'print'):"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -38,12 +38,12 @@ PREGUNTAS = [
             "¿Cuál código verifica si una calificación es A (90+), B (80-89), C (70-79) o F (<70)?"
         ),
         "opciones": [
-            "if cal >= 90: print(\"A\")\nelse: print(\"B\")",
-            "if cal >= 90: print(\"A\")\nelif cal >= 80: print(\"B\")\nelif cal >= 70: print(\"C\")\nelse: print(\"F\")",
-            "if cal == 90: print(\"A\")",
-            "if cal > 70: print(\"A\")",
+            "if cal >= 90:\n    print(\"A\")\nelse:\n    print(\"B\")",
+            "if cal >= 90:\n    print(\"A\")\nelif cal >= 80:\n    print(\"B\")\nelif cal >= 70:\n    print(\"C\")\nelse:\n    print(\"F\")",
+            "if cal == 90:\n    print(\"A\")",
+            "if cal > 70:\n    print(\"A\")",
         ],
-        "respuesta_correcta": "if cal >= 90: print(\"A\")\nelif cal >= 80: print(\"B\")\nelif cal >= 70: print(\"C\")\nelse: print(\"F\")",
+        "respuesta_correcta": "if cal >= 90:\n    print(\"A\")\nelif cal >= 80:\n    print(\"B\")\nelif cal >= 70:\n    print(\"C\")\nelse:\n    print(\"F\")",
         "puntaje": 1,
     },
 
@@ -52,7 +52,7 @@ PREGUNTAS = [
         "id": 3,
         "tipo": "opcion_multiple",
         "enunciado": (
-            "¿Cuál código verifica si un número es positivo, negativo o cero?"
+            "¿Cuál código clasifica un número como positivo, negativo o cero?"
         ),
         "opciones": [
             "if numero > 0:\n    print(\"positivo\")\nelse:\n    print(\"negativo\")",
@@ -69,14 +69,14 @@ PREGUNTAS = [
         "id": 4,
         "tipo": "escritura",
         "enunciado": (
-            "Completa el `while`:\n\n"
+            "Completa el operador para que imprima 1, 2, 3, 4, 5:\n\n"
             "```python\n"
             "i = 1\n"
             "while i ______ 5:\n"
             "    print(i)\n"
             "    i += 1\n"
             "```\n\n"
-            "Escribe el operador para imprimir 1, 2, 3, 4, 5:"
+            "Escribe solo el operador:"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -103,19 +103,20 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P6 — Escribir IF anidado ────────────────────────────
+    # ── P6 — Escribir IF anidado con acción clara ──────────
     {
         "id": 6,
         "tipo": "escritura",
         "enunciado": (
-            "Escribe código que verifique si un número es positivo **y** par.\n\n"
+            "Escribe código que imprima 'válido' solo si el número es positivo Y par.\n"
+            "Si no cumple ambas condiciones, no imprime nada.\n\n"
             "Considera `numero = 6`"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
-            "if numero > 0:\n    if numero % 2 == 0:\n        print(\"Es positivo y par\")",
-            "if numero>0:\n    if numero%2==0:\n        print(\"Es positivo y par\")",
-            "if numero > 0 and numero % 2 == 0:\n    print(\"Es positivo y par\")",
+            "if numero > 0:\n    if numero % 2 == 0:\n        print(\"válido\")",
+            "if numero>0:\n    if numero%2==0:\n        print(\"válido\")",
+            "if numero > 0 and numero % 2 == 0:\n    print(\"válido\")",
         ],
         "puntaje": 1,
     },
@@ -125,13 +126,13 @@ PREGUNTAS = [
         "id": 7,
         "tipo": "escritura",
         "enunciado": (
-            "Completa:\n\n"
+            "Completa el operador lógico para que imprima solo si está entre 1 y 9:\n\n"
             "```python\n"
             "numero = 7\n"
             "if numero > 0 ______ numero < 10:\n"
             "    print(\"Está entre 1 y 9\")\n"
             "```\n\n"
-            "Escribe el operador lógico:"
+            "Escribe solo el operador:"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -145,7 +146,7 @@ PREGUNTAS = [
         "id": 8,
         "tipo": "opcion_multiple",
         "enunciado": (
-            "¿Cuál es la salida de este código?\n\n"
+            "¿Cuál es la salida exacta de este código?\n\n"
             "```python\n"
             "x = 5\n"
             "if x > 10:\n"
@@ -164,13 +165,13 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P9 — Escribir WHILE desde 0, impares ────────────────
+    # ── P9 — Escribir WHILE con condición clara ────────────
     {
         "id": 9,
         "tipo": "escritura",
         "enunciado": (
-            "Escribe un `while` que incremente `i` desde 0 hasta que sea mayor a 3.\n"
-            "Imprime solo si `i` es impar."
+            "Escribe un `while` que imprima solo los números impares desde 0 hasta 3 (inclusive).\n\n"
+            "Resultado esperado: imprime 1 y 3"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -186,7 +187,7 @@ PREGUNTAS = [
         "id": 10,
         "tipo": "escritura",
         "enunciado": (
-            "¿Cuál es el valor final de `x` después de este código?\n\n"
+            "¿Cuál es el valor final de `x` después de ejecutar este código?\n\n"
             "```python\n"
             "x = 0\n"
             "i = 1\n"
@@ -195,7 +196,7 @@ PREGUNTAS = [
             "    i += 1\n"
             "print(x)\n"
             "```\n\n"
-            "Escribe solo el número:"
+            "Escribe solo el número que se imprime:"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
