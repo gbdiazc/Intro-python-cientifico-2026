@@ -42,7 +42,7 @@ PREGUNTAS = [
             "Completa la línea del `if` para verificar si un número es divisible entre 4:\n\n"
             "```python\n"
             "num = int(input(\"Ingrese un número: \"))\n"
-            "______:\n"
+            "______\n"
             "    print(num, \" es divisible entre 4\")\n"
             "else:\n"
             "    print(num, \" no es divisible entre 4\")\n"
@@ -99,8 +99,6 @@ PREGUNTAS = [
             "<=",
             "<= 5",
             "< 6",
-            "< 6",
-            "<= 5",
             "< = 5",
         ],
         "puntaje": 1,
