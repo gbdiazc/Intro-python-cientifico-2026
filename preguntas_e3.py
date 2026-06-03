@@ -129,8 +129,8 @@ PREGUNTAS = [
         "id": 6,
         "tipo": "escritura",
         "enunciado": (
-            "Escribe código que imprima 'válido' solo si el número es positivo Y par.\n"
-            "Si no cumple ambas condiciones, no imprime nada.\n\n"
+            "Escribe un código que imprima 'válido' solo si el número es positivo y par.\n"
+            "Si no cumple ambas condiciones que no imprime nada.\n\n"
             "Considera el `numero = 6` dado, no tienes que definirlo"
         ),
         "placeholder": "Tu respuesta aquí...",
