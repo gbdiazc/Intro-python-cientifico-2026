@@ -129,14 +129,24 @@ PREGUNTAS = [
         "enunciado": (
             "Escribe código que imprima 'válido' solo si el número es positivo Y par.\n"
             "Si no cumple ambas condiciones, no imprime nada.\n\n"
-            "Considera `numero = 6`"
+            "Considera el `numero = 6` dado, no tienes que definirlo"
         ),
         "placeholder": "Tu respuesta aquí...",
-        "respuestas_validas": [
-            "if numero > 0:\n    if numero % 2 == 0:\n        print(\"válido\")",
-            "if numero>0:\n    if numero%2==0:\n        print(\"válido\")",
-            "if numero > 0 and numero % 2 == 0:\n    print(\"válido\")",
-        ],
+"respuestas_validas": [
+    "if numero > 0:\n    if numero % 2 == 0:\n        print(\"válido\")",
+    "if numero>0:\n    if numero%2==0:\n        print(\"válido\")",
+    "if numero > 0 and numero % 2 == 0:\n    print(\"válido\")",
+    "if numero > 0:\n    if numero % 2 == 0 :\n        print(\"válido\")",
+    "if numero > 0:\n  if numero % 2 == 0:\n    print(\"válido\")",
+    "if numero > 0 and numero % 2 == 0 :\n    print(\"válido\")",
+    "if numero%4==0 and numero>0:\n    print(\"válido\")",
+    "if numero > 0 and numero % 2 != 1:\n    print(\"válido\")",
+    "if numero >= 1 and numero % 2 == 0:\n    print(\"válido\")",
+    "if numero > 0:\n    if numero % 2 == 0:\n        print( \"válido\" )",
+    "if numero % 2 == 0:\n    if numero > 0:\n        print(\"válido\")",
+    "if numero % 2 == 0 and numero > 0:\n    print(\"válido\")",
+    "if (numero % 2) == 0 and numero > 0:\n    print(\"válido\")",
+],
         "puntaje": 1,
     },
 
