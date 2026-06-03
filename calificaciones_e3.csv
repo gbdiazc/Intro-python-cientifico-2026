@@ -101,3 +101,13 @@ while temperatura < 20:
     print(temperatura)
     temperatura += 1",0,"ik","if i % 2 != 0:
         print(i)",0,"if num %4 == 0","if num % 4 == 0:",0
+"2026-06-03 21:09:54","gaby",6,3,5,03:41,"if numero > 0 and numero % 2 == 0:\n    print(válido)","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"","if i % 2 != 0:
+        print(i)",0,"i = 1
+while i <= 5:
+    print(i)
+    i += 1","i = 1
+while i <= 5:
+    print(i)
+    i += 1",1,"10","10",1,"Menor","Menor",1
