@@ -86,3 +86,7 @@ else:
         print(i)",0,"and","<= 5",0,"elif 
 else","elif edad >= 13:
 else:",0
+"2026-06-03 20:13:26","Pablito B",2,1,5,10:00,"","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"","<= 5",0,"","10",0,"","if i % 2 != 0:
+        print(i)",0,"Menor","Menor",1
