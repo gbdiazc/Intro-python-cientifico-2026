@@ -34,39 +34,48 @@ PREGUNTAS = [
         "puntaje": 1,
     },
 
-    # ── P2 — Opción múltiple IF-ELIF-ELSE con calificaciones 
+    # ── P2 — Completar IF para verificar divisibilidad ──────
     {
         "id": 2,
-        "tipo": "opcion_multiple",
+        "tipo": "escritura",
         "enunciado": (
-            "¿Cuál código verifica si una calificación es A (90+), B (80-89), C (70-79) o F (<70)?"
+            "Completa la línea del `if` para verificar si un número es divisible entre 4:\n\n"
+            "```python\n"
+            "num = int(input(\"Ingrese un número: \"))\n"
+            "______:\n"
+            "    print(num, \" es divisible entre 4\")\n"
+            "else:\n"
+            "    print(num, \" no es divisible entre 4\")\n"
+            "```\n\n"
+            "Escribe la línea del `if` que falta:"
         ),
-        "opciones": [
-            "if cal >= 90:\n    print(\"A\")\nelse:\n    print(\"B\")",
-            "if cal >= 90:\n    print(\"A\")\nelif cal >= 80:\n    print(\"B\")\nelif cal >= 70:\n    print(\"C\")\nelse:\n    print(\"F\")",
-            "if cal == 90:\n    print(\"A\")",
-            "if cal > 70:\n    print(\"A\")",
+        "placeholder": "Tu respuesta aquí...",
+        "respuestas_validas": [
+            "if num % 4 == 0:",
+            "if num%4==0:",
+            "if num % 4 == 0 :",
         ],
-        "respuesta_correcta": "if cal >= 90:\n    print(\"A\")\nelif cal >= 80:\n    print(\"B\")\nelif cal >= 70:\n    print(\"C\")\nelse:\n    print(\"F\")",
         "puntaje": 1,
     },
 
-    # ── P3 — Escribir código IF-ELIF-ELSE ──────────────────
+    # ── P3 — Escribir WHILE con incremento ──────────────────
     {
         "id": 3,
         "tipo": "escritura",
         "enunciado": (
-            "Escribe código que imprima 'positivo', 'negativo' o 'cero' según el número.\n\n"
-            "Considera `numero = 5`"
+            "Escribe un `while` que imprima temperaturas desde 15 hasta 19 (inclusive).\n\n"
+            "En cada iteración:\n"
+            "- Imprime la temperatura actual\n"
+            "- Incrementa la temperatura en 1\n\n"
+            "Considera `temperatura = 15`"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
-            "if numero > 0:\n    print(\"positivo\")\nelif numero < 0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
-            "if numero>0:\n    print(\"positivo\")\nelif numero<0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
-            "numero = 5\nif numero > 0:\n    print(\"positivo\")\nelif numero < 0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
-            "numero=5\nif numero>0:\n    print(\"positivo\")\nelif numero<0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
-            "numero = 5\nif numero < 0:\n    print(\"negativo\")\nelif numero > 0:\n    print(\"positivo\")\nelse:\n    print(\"cero\")",
-            "numero=5\nif numero<0:\n    print(\"negativo\")\nelif numero>0:\n    print(\"positivo\")\nelse:\n    print(\"cero\")",
+            "temperatura = 15\nwhile temperatura < 20:\n    print(temperatura)\n    temperatura += 1",
+            "temperatura = 15\nwhile temperatura < 20:\n    print(temperatura)\n    temperatura = temperatura + 1",
+            "temperatura=15\nwhile temperatura<20:\n    print(temperatura)\n    temperatura+=1",
+            "while temperatura < 20:\n    print(temperatura)\n    temperatura += 1",
+            "while temperatura < 20:\n    print(temperatura)\n    temperatura = temperatura + 1",
         ],
         "puntaje": 1,
     },
@@ -83,12 +92,16 @@ PREGUNTAS = [
             "    print(i)\n"
             "    i += 1\n"
             "```\n\n"
-            "Escribe solo el operador:"
+            "Escribe el operador completo (puede ser solo el operador o con el número):"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
+            "<=",
             "<= 5",
             "< 6",
+            "< 6",
+            "<= 5",
+            "< = 5",
         ],
         "puntaje": 1,
     },
@@ -192,6 +205,10 @@ PREGUNTAS = [
             "if i%2!=0:\n        print(i)",
             "if i % 2 == 1:\n        print(i)",
             "if i%2==1:\n        print(i)",
+            "if i % 2 != 0:\n    print(i)",
+            "if i%2!=0:\n    print(i)",
+            "if i % 2 == 1:\n    print(i)",
+            "if i%2==1:\n    print(i)",
         ],
         "puntaje": 1,
     },

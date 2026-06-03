@@ -274,10 +274,14 @@ def color_timer(seg):
 
 
 def normalizar_codigo(codigo):
-    """Normaliza código Python: quita espacios extra, estandariza indentación."""
-    lineas = [linea.rstrip() for linea in codigo.strip().split('\n')]
-    lineas = [l for l in lineas if l]  # Quitar líneas vacías
-    return '\n'.join(lineas).lower()  # Minúsculas para comparación flexible
+    """Normaliza código: quita espacios, estandariza comparación flexible."""
+    # Quitar saltos de línea al inicio/fin, dividir en líneas
+    lineas = [linea.strip() for linea in codigo.strip().split('\n')]
+    # Quitar líneas vacías
+    lineas = [l for l in lineas if l]
+    # Unir líneas, convertir a minúsculas, quitar todos los espacios
+    texto = '\n'.join(lineas).lower().replace(' ', '')
+    return texto
 
 def normalizar(texto):
     """Quita espacios extra internos y convierte a minúsculas para comparar."""
@@ -596,11 +600,21 @@ elif st.session_state.pantalla == "examen":
                         st.markdown(f"**{chr(97+i)})** `{opc}`")
                 
                 # Selector de respuesta - SIN opción predefinida
+                # Mostrar contenido de opción (primera línea si es código, todo si es texto)
+                def get_label(x):
+                    opc = opciones[x]
+                    if '\n' in opc:
+                        # Para código, mostrar primera línea
+                        return opc.split('\n')[0]
+                    else:
+                        # Para texto, mostrar todo
+                        return opc
+                
                 idx = opciones.index(val) if val in opciones else None
                 sel = st.radio(
                     f"opc_{pid}",
                     range(len(opciones)),
-                    format_func=lambda x: f"{chr(97+x)}",
+                    format_func=get_label,
                     index=None,
                     key=f"radio_{pid}",
                     label_visibility="collapsed",
