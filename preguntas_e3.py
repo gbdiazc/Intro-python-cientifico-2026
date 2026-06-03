@@ -21,6 +21,7 @@ PREGUNTAS = [
             "    print(\"Niño\")\n"
             "```\n\n"
             "Respuesta esperada (2 líneas):\n"
+
             "```"
         ),
         "placeholder": "Tu respuesta aquí...",
