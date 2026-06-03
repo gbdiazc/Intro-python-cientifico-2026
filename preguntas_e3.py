@@ -10,27 +10,30 @@ PREGUNTAS = [
         "id": 1,
         "tipo": "escritura",
         "enunciado": (
-            "Completa el código que clasifica por edad. Escribe las dos líneas que faltan:\n\n"
+            "Completa el código que clasifica por edad. Clasifica mayores de 18 (inclusivo), mayores de 13 (inclusivo) y menores de 13.\n Escribe las dos líneas que faltan:\n\n"
             "```python\n"
             "edad = 15\n"
-            "if edad >= 18:\n"
+            "\n"
             "    print(\"Adulto\")\n"
-            "______ edad >= 13:\n"
+            "______ \n"
             "    print(\"Adolescente\")\n"
-            "______:\n"
+            "else:\n"
             "    print(\"Niño\")\n"
             "```\n\n"
             "Respuesta esperada (2 líneas):\n"
-            "```\n"
-            "elif edad >= 13:\n"
-            "else:\n"
             "```"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
-            "elif edad >= 13:\nelse:",
-            "elif edad>=13:\nelse:",
-        ],
+    "if edad >= 18:\nelif edad >= 13:",
+    "if edad>=18:\nelif edad>=13:",
+    "if edad >= 18 :\nelif edad >= 13 :",
+    "if edad>=18:\nelif edad >= 13:",
+    "if edad >= 18:\nelif edad>=13:",
+    "if edad>=18:\nelif edad >= 13 :",
+    "if edad>=18 :\nelif edad>=13 :",
+    "if edad  >=  18:\nelif edad  >=  13:",
+],
         "puntaje": 1,
     },
 
