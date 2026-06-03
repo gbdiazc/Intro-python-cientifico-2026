@@ -30,7 +30,7 @@ PREGUNTAS = [
         "id": 2,
         "tipo": "escritura",
         "enunciado": (
-            "Dada `lista = [10, 20, 30, 40]`, obtén el elemento en índice 2 y asígnalo a `x`.\n\n"
+            "Dada `lista = [10, 20, 30, 40]`, obtén el elemento que se encuentra en la posicion 2 y asígnalo a `x`.\n\n"
             "Escribe la línea completa de código:"
         ),
         "placeholder": "Tu respuesta aquí...",
