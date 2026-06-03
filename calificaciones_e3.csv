@@ -46,3 +46,11 @@ while i <= 5:
     print(""válido"")","if numero > 0:
     if numero % 2 == 0:
         print(""válido"")",1
+"2026-06-03 22:06:09","gp",0,0,5,00:23,"","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"if (numero % 2) == 0 and numero > 0:
+    print('válido')","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"","if edad >= 18:
+elif edad >= 13:",0,"","Menor",0,""," < = ",0
