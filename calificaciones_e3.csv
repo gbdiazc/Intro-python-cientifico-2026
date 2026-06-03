@@ -17,3 +17,12 @@ while i <= 5:
         print(""válido"")",0,"if num%4==0:","if num % 4 == 0:",1,"<="," < = ",1,"if i%2==0:
     print(i)","if i % 2 != 0:
         print(i)",0
+"2026-06-03 21:45:11","Pedro",8,4,5,02:54,"temperature = 15
+while temperatura<20:
+    print(temperatura)
+    temperatura += 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"10","10",1,"and","and",1,"Menor","Menor",1,"elif edad >= 13:
+else:","elif edad >= 13:
+else:",1
