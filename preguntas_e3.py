@@ -92,14 +92,15 @@ PREGUNTAS = [
             "    print(i)\n"
             "    i += 1\n"
             "```\n\n"
-            "Escribe el operador completo (puede ser solo el operador o con el número):"
+            "Escribe el operador completo:"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
-            "<=",
-            "<= 5",
-            "< 6",
-            "< = 5",
+            " < = ",
+            "<= ",
+            "< =",
+            "< = ",
+	    " <= ",
         ],
         "puntaje": 1,
     },
