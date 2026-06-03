@@ -1,0 +1,11 @@
+Fecha,Nombre,Calificacion,Correctas,Total,Tiempo,P1_alumno,P1_correcta,P1_ok,P2_alumno,P2_correcta,P2_ok,P3_alumno,P3_correcta,P3_ok,P4_alumno,P4_correcta,P4_ok,P5_alumno,P5_correcta,P5_ok
+"2026-06-03 17:59:32","gaby",4,2,5,10:00,"if numero > 0: print(""positivo"") else: print(""negativo"")","if numero > 0: print(""positivo"") else: print(""negativo"")",1,"or","and",0,"","if calificacion >= 90:
+    print(""A"")
+elif calificacion >= 80:
+    print(""B"")
+elif calificacion >= 70:
+    print(""C"")
+else:
+    print(""F"")",0,"while i <= 5: print(i); i += 1","while i <= 5: print(i); i += 1",1,"","if numero > 0:
+    if numero % 2 == 0:
+        print(""Es positivo y par"")",0
