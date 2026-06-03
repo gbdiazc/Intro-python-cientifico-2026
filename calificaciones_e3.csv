@@ -11,3 +11,9 @@ while i <= 5:
 while i <= 5:
     print(i)
     i += 1",1,"","10",0
+"2026-06-03 21:40:34","Jonny M",6,3,5,04:50,"10","10",1,"if numero >0 and numero%2== 0:
+     print(""Válido)","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"if num%4==0:","if num % 4 == 0:",1,"<="," < = ",1,"if i%2==0:
+    print(i)","if i % 2 != 0:
+        print(i)",0
