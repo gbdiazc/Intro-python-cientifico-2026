@@ -13,15 +13,13 @@ PREGUNTAS = [
             "Completa el código que clasifica por edad. Clasifica mayores de 18 (inclusivo), mayores de 13 (inclusivo) y menores de 13.\n Escribe las dos líneas que faltan:\n\n"
             "```python\n"
             "edad = 15\n"
-            "\n"
+            "______\n"
             "    print(\"Adulto\")\n"
             "______ \n"
             "    print(\"Adolescente\")\n"
             "else:\n"
             "    print(\"Niño\")\n"
             "```\n\n"
-            "Respuesta esperada (2 líneas):\n"
-
             "```"
         ),
         "placeholder": "Tu respuesta aquí...",
