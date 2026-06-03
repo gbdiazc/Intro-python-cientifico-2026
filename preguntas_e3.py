@@ -194,6 +194,7 @@ PREGUNTAS = [
             "i = 0\n"
             "while i <= 3:\n"
             "    _______\n"
+	    "    _______\n"
             "    i += 1\n"
             "```\n\n"
             "Escribe las 2 líneas que van en el espacio en blanco:"
