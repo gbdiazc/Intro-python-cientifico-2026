@@ -71,3 +71,10 @@ while temperatura < 20:
     temperatura += 1",0,"if edad >= 18:
 elif edad<18 and 15<= edad:","if edad >= 18:
 elif edad >= 13:",0,"10","10",1
+"2026-06-03 22:19:27","Lupe",6,3,5,01:48,"<="," < = ",1,"temperatura = 15
+while temperatura <=19:
+     print('temperatura')
+     temperatura += 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"10","10",1,"if num%4==0","if num % 4 == 0:",0,"and","and",1
