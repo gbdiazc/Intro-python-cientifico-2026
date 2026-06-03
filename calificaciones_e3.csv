@@ -54,3 +54,39 @@ while i <= 5:
     i += 1",1,"elif
 else","elif edad >= 13:
 else:",0
+"2026-06-03 19:43:27","gaby",6,3,5,02:05,"<=","<= 5",0,"Menor","Menor",1,"if numero >0 and numero %2 == 0:
+    print(""válido"")","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"10","10",1,"and","and",1
+"2026-06-03 19:57:05","p",2,1,5,01:54,"","if numero > 0:
+    print(""positivo"")
+elif numero < 0:
+    print(""negativo"")
+else:
+    print(""cero"")",0,"elif
+else","elif edad >= 13:
+else:",0,"if i%2 == 1:
+   print(i)","if i % 2 != 0:
+        print(i)",0,"","if cal >= 90:
+    print(""A"")
+elif cal >= 80:
+    print(""B"")
+elif cal >= 70:
+    print(""C"")
+else:
+    print(""F"")",0,"and","and",1
+"2026-06-03 20:06:49","gaby",0,0,5,00:38,"","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"","if numero > 0:
+    print(""positivo"")
+elif numero < 0:
+    print(""negativo"")
+else:
+    print(""cero"")",0,"","if i % 2 != 0:
+        print(i)",0,"and","<= 5",0,"elif 
+else","elif edad >= 13:
+else:",0
+"2026-06-03 20:13:26","Pablito B",2,1,5,10:00,"","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"","<= 5",0,"","10",0,"","if i % 2 != 0:
+        print(i)",0,"Menor","Menor",1
