@@ -10,7 +10,7 @@ PREGUNTAS = [
         "id": 1,
         "tipo": "escritura",
         "enunciado": (
-            "Completa el código que clasifica por edad:\n\n"
+            "Completa el código que clasifica por edad. Escribe las dos líneas que faltan:\n\n"
             "```python\n"
             "edad = 15\n"
             "if edad >= 18:\n"
@@ -20,7 +20,11 @@ PREGUNTAS = [
             "______:\n"
             "    print(\"Niño\")\n"
             "```\n\n"
-            "Escribe las dos líneas que faltan (sin 'print'):"
+            "Respuesta esperada (2 líneas):\n"
+            "```\n"
+            "elif edad >= 13:\n"
+            "else:\n"
+            "```"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -59,6 +63,10 @@ PREGUNTAS = [
         "respuestas_validas": [
             "if numero > 0:\n    print(\"positivo\")\nelif numero < 0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
             "if numero>0:\n    print(\"positivo\")\nelif numero<0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
+            "numero = 5\nif numero > 0:\n    print(\"positivo\")\nelif numero < 0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
+            "numero=5\nif numero>0:\n    print(\"positivo\")\nelif numero<0:\n    print(\"negativo\")\nelse:\n    print(\"cero\")",
+            "numero = 5\nif numero < 0:\n    print(\"negativo\")\nelif numero > 0:\n    print(\"positivo\")\nelse:\n    print(\"cero\")",
+            "numero=5\nif numero<0:\n    print(\"negativo\")\nelif numero>0:\n    print(\"positivo\")\nelse:\n    print(\"cero\")",
         ],
         "puntaje": 1,
     },
