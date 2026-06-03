@@ -27,6 +27,14 @@ def cargar_examen(numero_examen):
             "preguntas": PREG_E2,
             "csv": "calificaciones_e2.csv",
         }
+    elif numero_examen == 3:
+        from preguntas_e3 import PREGUNTAS as PREG_E3
+        return {
+            "numero": 3,
+            "titulo": "Control de Flujo: IF, ELIF, ELSE, WHILE, FOR",
+            "preguntas": PREG_E3,
+            "csv": "calificaciones_e3.csv",
+        }
     else:
         return None
 
@@ -46,7 +54,7 @@ PUNTOS_POR_PREGUNTA = 2   # 5 × 2 = 10
 #   None        → Los alumnos eligen (pantalla de selección)
 #   1           → Solo Examen 1 (directo a login)
 #   2           → Solo Examen 2 (directo a login)
-EXAMEN_FIJO = 2  # Cambia aquí: None, 1 o 2
+EXAMEN_FIJO = None  # Cambia aquí: None, 1 o 2
 
 # ── CSS global — tema claro ───────────────────────────────────────────────────
 st.markdown("""
@@ -265,6 +273,12 @@ def color_timer(seg):
     return "timer-low"
 
 
+def normalizar_codigo(codigo):
+    """Normaliza código Python: quita espacios extra, estandariza indentación."""
+    lineas = [linea.rstrip() for linea in codigo.strip().split('\n')]
+    lineas = [l for l in lineas if l]  # Quitar líneas vacías
+    return '\n'.join(lineas).lower()  # Minúsculas para comparación flexible
+
 def normalizar(texto):
     """Quita espacios extra internos y convierte a minúsculas para comparar."""
     return " ".join(texto.lower().split())
@@ -276,8 +290,16 @@ def calificar(preguntas, respuestas):
         raw  = respuestas.get(pid, None)
         resp = (raw or "").strip()
         if p["tipo"] == "escritura":
-            resp_norm = normalizar(resp)
-            correcto  = any(resp_norm == normalizar(v) for v in p["respuestas_validas"])
+            # Detectar si es código multilineal (contiene \n o es muy largo)
+            es_multilineal = '\n' in resp or len(resp) > 100
+            if es_multilineal:
+                # Usar normalización de código
+                resp_norm = normalizar_codigo(resp)
+                correcto = any(normalizar_codigo(v) == resp_norm for v in p["respuestas_validas"])
+            else:
+                # Usar normalización simple (sin mayúsculas)
+                resp_norm = normalizar(resp)
+                correcto = any(resp_norm == normalizar(v) for v in p["respuestas_validas"])
             correcta  = p["respuestas_validas"][0]
         else:
             correcto = (resp == p["respuesta_correcta"]) if resp else False
@@ -408,7 +430,7 @@ if EXAMEN_FIJO is None and st.session_state.pantalla == "seleccionar_examen":
     st.markdown("#### 🎓 ¿Cuál examen deseas presentar?")
     st.markdown("")
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     
     with col1:
         st.markdown(
@@ -437,6 +459,21 @@ if EXAMEN_FIJO is None and st.session_state.pantalla == "seleccionar_examen":
         if st.button("Seleccionar", key="btn_e2", use_container_width=True):
             st.session_state.numero_examen = 2
             st.session_state.examen_config = cargar_examen(2)
+            st.session_state.pantalla = "login"
+            st.rerun()
+    
+    with col3:
+        st.markdown(
+            '<div style="background:#f4e8f7; border:2px solid #d946ef; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">'
+            '<div style="font-size:2rem; margin-bottom:8px;">⚙️</div>'
+            '<div style="font-weight:600; color:#d946ef; margin-bottom:4px;">Examen 3</div>'
+            '<div style="font-size:0.85rem; color:#555;">Control de Flujo</div>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+        if st.button("Seleccionar", key="btn_e3", use_container_width=True):
+            st.session_state.numero_examen = 3
+            st.session_state.examen_config = cargar_examen(3)
             st.session_state.pantalla = "login"
             st.rerun()
     
@@ -536,9 +573,10 @@ elif st.session_state.pantalla == "examen":
 
             pid = p["id"]
             if p["tipo"] == "escritura":
-                nueva = st.text_input(
+                nueva = st.text_area(
                     f"resp_{pid}",
                     placeholder=p.get("placeholder", "Tu respuesta aquí..."),
+                    height=100,
                     key=f"input_{pid}",
                     label_visibility="collapsed",
                 )
