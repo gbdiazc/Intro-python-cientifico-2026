@@ -11,3 +11,4 @@ Fecha,Nombre,Calificacion,Correctas,Total,Tiempo,P1_alumno,P1_correcta,P1_ok,P2_
 "2026-06-02 23:17:41","gaby",8,4,5,01:00,"a or b","a > 10 or b > 5",0,"lista.append(4)","lista.append(4)",1,"valor = dict[""color""]","valor = dict[""color""]",1,"False","False",1,"2","2",1
 "2026-06-02 23:20:32","gaby",6,3,5,00:42,"resultado = float(""27.5"")","lista.append(4)",0,"a > 10 or b > 5","a > 10 or b > 5",1,"numeros = [1, 2, 3, 4, 5]","numeros = [1, 2, 3, 4, 5]",1,"False","False",1,"persona =","persona = {""nombre"": ""Ana"", ""edad"": 25}",0
 "2026-06-03 14:39:33","Jonny M",10,5,5,05:04,"True and True","True and True",1,"x= lista[2]","x = lista[2]",1,"2","2",1,"valor = dict[""color""]","valor = dict[""color""]",1,"a > 10 or b > 5","a > 10 or b > 5",1
+"2026-06-03 14:49:53","PFP",2,1,5,10:00,"True and True","True and True",1,"3 > 1 and 6 < 4 or not (2 == 2)","15 != 10 and 20 < 18",0,"","False",0,"","2",0,"","numeros = [1, 2, 3, 4, 5]",0
