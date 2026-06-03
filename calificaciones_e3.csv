@@ -9,3 +9,16 @@ else:
     print(""F"")",0,"while i <= 5: print(i); i += 1","while i <= 5: print(i); i += 1",1,"","if numero > 0:
     if numero % 2 == 0:
         print(""Es positivo y par"")",0
+"2026-06-03 19:19:11","gaby",6,3,5,01:57,"while i <= 5:
+    print(i)
+    i += 1","while i <= 5:
+    print(i)
+    i += 1",1,"Mayor","Menor",0,"if numero > 0:
+    print(""positivo"")
+else:
+    print(""negativo"")","if numero > 0:
+    print(""positivo"")
+elif numero < 0:
+    print(""negativo"")
+else:
+    print(""cero"")",0,"and","and",1,"10","10",1
