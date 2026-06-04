@@ -1,0 +1,178 @@
+Fecha,Nombre,Calificacion,Correctas,Total,Tiempo,P1_alumno,P1_correcta,P1_ok,P2_alumno,P2_correcta,P2_ok,P3_alumno,P3_correcta,P3_ok,P4_alumno,P4_correcta,P4_ok,P5_alumno,P5_correcta,P5_ok
+"2026-06-04 16:13:33","Josue Andrade Hernandez",8,4,5,05:40,"while temperatura <= 19:
+    print(temperatura)
+    temperatura += 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"Menor","Menor",1,"if i % 2 != 0:
+        print(i)","if i % 2 != 0:
+        print(i)",1,"10","10",1,"if num % 4 == 0:","if num % 4 == 0:",1
+"2026-06-04 16:16:13","Isaias Espinosa",8,4,5,06:29,"while temperatura <= 19:
+    print(temperatura)
+    temperatura += 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"<="," < = ",1,"Menor","Menor",1,"if i % 2 != 0:
+    print(i)","if i % 2 != 0:
+        print(i)",1,"Or","or",1
+"2026-06-04 16:16:15","Cristo Gerardo Benitez Mesino",2,1,5,07:04,"if numero % 2 = 0  and numero > 0:
+    print('válido')","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"if num%4 = 0:","if num % 4 == 0:",0,"or","or",1,"if i%2!=0:
+    print('i')","if i % 2 != 0:
+        print(i)",0,"while temperatura < 20:
+    print('temperatura')
+    temperatura += 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0
+"2026-06-04 16:17:12","José Samuel",4,2,5,08:57,"num = int (input(“Ingrese un número: “))
+
+if numero % 4 == 0:
+print (num , “ es divisible entre 4”)
+Else:
+print (num, “no es divisible entre 4”)","if num % 4 == 0:",0,"if numero > 0 and numero % 2 == 0:
+    print('válido')","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",1,"i = 0
+while i <= 3:
+    If  i % 2 == 0
+    print (‘Número par:’ , i)
+    i += 1","if i % 2 != 0:
+        print(i)",0,"","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"Menor","Menor",1
+"2026-06-04 16:17:14","Irais Yolotzin Cantellano Cervantes",4,2,5,07:41,"if edad>=18:
+
+elif edad>=13:","if edad >= 18:
+elif edad >= 13:",1,"if numero>0 and numero%2=0:
+    print(""válido"")","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"while temperatura >= 15 and temperatura <=19:
+    print(temperatura)
+    temperatura = temperatura+1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"and","or",0,"i = 1
+while i <= 5:
+    print(i)
+    i += 1","i = 1
+while i <= 5:
+    print(i)
+    i += 1",1
+"2026-06-04 16:17:50","Nadia González",6,3,5,08:02,"if num%4==0","if num % 4 == 0:",0,"Menor","Menor",1,"if i%2!=0: 
+                   print (i)","if i % 2 != 0:
+        print(i)",1,"if numero%2==0 and numero>0:
+                     print (“válido”)","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"10","10",1
+"2026-06-04 16:18:28","Leonardo García Martínez",8,4,5,09:47,"<="," < = ",1,"if edad >= 18:
+elif edad >= 13:","if edad >= 18:
+elif edad >= 13:",1,"i = 1
+while i <= 5:
+    print(i)
+    i += 1","i = 1
+while i <= 5:
+    print(i)
+    i += 1",1,"while temperatura <= 19:
+    print(temperatura)
+    temperatura += 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"if num % 4 == 0:","if num % 4 == 0:",1
+"2026-06-04 16:19:01","EDUARDO OMAR CORDOVA JIMENEZ",4,2,5,09:32,"temperatura = 15
+
+while temperatura <= 19:
+    print(temperatura)
+    temperatura = temperatura + 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"i = 1
+while i <= 5:
+    print(i)
+    i += 1","i = 1
+while i <= 5:
+    print(i)
+    i += 1",1,"i = 1
+while i <= 5:
+    print(i)
+    i += 1"," < = ",0,"10","10",1,"numero = 15
+if numero < 1  or numero > 9:
+    print(""Fuera de rango"")","or",0
+"2026-06-04 16:19:15","Daniela Alvarez Guerrero",2,1,5,10:00,"temperatura = 15
+while= temperatura<=19
+ print(""La temperatura actual es: "" , temperature)
+ temperatura = temperatura + 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"Menor","Menor",1,"if edad>= 18:
+elif edad >=13 or edad<18:","if edad >= 18:
+elif edad >= 13:",0,"print(i)
+if","if i % 2 != 0:
+        print(i)",0,"while i <=5:"," < = ",0
+"2026-06-04 16:19:18","Wendy Cabrera González",2,1,5,10:00,"valido = int(Input(""Escribe un número""))
+if valido > 0 and valido % 2 == 0:
+      print(""valido"")","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"edad = 15 
+if
+     edad > 18 
+     print(""Adulto"")
+else: 
+         edad > 13 and edad < 18
+         print(""Adolescente"")
+else:
+         edad < 13
+          print(""Niño"")","if edad >= 18:
+elif edad >= 13:",0,"temperatura = 15","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"Menor","Menor",1,""," < = ",0
+"2026-06-04 16:19:42","Raquel Itzel Rodríguez Cisneros",4,2,5,10:00,"temperatura = 15 
+while temperatura <= 19:
+print(temperatura)
+temperatura += 1 = temperatura + 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"else","or",0,"Menor","Menor",1,"i = 1
+while i <= 5:
+    print(i)
+    i += 1","i = 1
+while i <= 5:
+    print(i)
+    i += 1",1,"","if edad >= 18:
+elif edad >= 13:",0
+"2026-06-04 16:20:39","Francisco Dionisio",4,2,5,08:21,"while i<=5:"," < = ",0,"if num%4 == 0:","if num % 4 == 0:",0,"or","or",1,"Menor","Menor",1,"if i%2 =! 0:
+print (i)","if i % 2 != 0:
+        print(i)",0
+"2026-06-04 16:21:58","ELISEO",0,0,5,10:00,"and","or",0,"5","10",0,"If num %4==0:","if num % 4 == 0:",0,"temp=15
+while temp<=19:
+     print(temp)
+    temp=temp +1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0
+"2026-06-04 18:09:44","Eduardo Daniel Prado Rodríguez",8,4,5,06:02,"Menor","Menor",1,"if num % 4 == 0:","if num % 4 == 0:",1,"10","10",1,"<="," < = ",1,"while temperatura<=19:
+   print(temperatura)
+   temperatura+=1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0
+"2026-06-04 18:09:48","Itzel Idalia Muñoz Muñiz",6,3,5,06:00,"while temperatura>=15 and temperatura <=19:
+   print(temperatura)
+   temperatura=temperatura+1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"if (edad>18)
+
+if(edad>13)","if edad >= 18:
+elif edad >= 13:",0,"or","or",1,"10","10",1,"Menor","Menor",1
+"2026-06-04 18:14:21","Daniela Alvarez Guerrero",4,2,5,08:54,"if  num%4==0","if num % 4 == 0:",0,"if  i%2!=0
+print( i)","if i % 2 != 0:
+        print(i)",0,"Menor","Menor",1,"or","or",1,"while i<=5:"," < = ",0
+"2026-06-04 18:17:20","Eliseo Andrei",8,4,5,08:11,"if i%2==0:
+print(i)","if i % 2 != 0:
+        print(i)",0,"Menor","Menor",1,"if num%4==0:","if num % 4 == 0:",1,"or","or",1,"10","10",1
