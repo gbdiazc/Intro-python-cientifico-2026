@@ -67,3 +67,17 @@ while i <= 5:
                      print (“válido”)","if numero > 0:
     if numero % 2 == 0:
         print(""válido"")",0,"10","10",1
+"2026-06-04 16:18:28","Leonardo García Martínez",8,4,5,09:47,"<="," < = ",1,"if edad >= 18:
+elif edad >= 13:","if edad >= 18:
+elif edad >= 13:",1,"i = 1
+while i <= 5:
+    print(i)
+    i += 1","i = 1
+while i <= 5:
+    print(i)
+    i += 1",1,"while temperatura <= 19:
+    print(temperatura)
+    temperatura += 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"if num % 4 == 0:","if num % 4 == 0:",1
