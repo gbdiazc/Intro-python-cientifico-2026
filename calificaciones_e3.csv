@@ -155,3 +155,9 @@ while temperatura < 20:
     temperatura += 1",0,"","if numero > 0:
     if numero % 2 == 0:
         print(""válido"")",0
+"2026-06-04 18:09:44","Eduardo Daniel Prado Rodríguez",8,4,5,06:02,"Menor","Menor",1,"if num % 4 == 0:","if num % 4 == 0:",1,"10","10",1,"<="," < = ",1,"while temperatura<=19:
+   print(temperatura)
+   temperatura+=1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0
