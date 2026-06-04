@@ -15,3 +15,14 @@ while temperatura < 20:
     temperatura += 1",0,"<="," < = ",1,"Menor","Menor",1,"if i % 2 != 0:
     print(i)","if i % 2 != 0:
         print(i)",1,"Or","or",1
+"2026-06-04 16:16:15","Cristo Gerardo Benitez Mesino",2,1,5,07:04,"if numero % 2 = 0  and numero > 0:
+    print('válido')","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"if num%4 = 0:","if num % 4 == 0:",0,"or","or",1,"if i%2!=0:
+    print('i')","if i % 2 != 0:
+        print(i)",0,"while temperatura < 20:
+    print('temperatura')
+    temperatura += 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0
