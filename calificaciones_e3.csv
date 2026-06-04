@@ -143,3 +143,6 @@ while i <= 5:
     print(i)
     i += 1",1,"","if edad >= 18:
 elif edad >= 13:",0
+"2026-06-04 16:20:39","Francisco Dionisio",4,2,5,08:21,"while i<=5:"," < = ",0,"if num%4 == 0:","if num % 4 == 0:",0,"or","or",1,"Menor","Menor",1,"if i%2 =! 0:
+print (i)","if i % 2 != 0:
+        print(i)",0
