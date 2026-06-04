@@ -211,7 +211,7 @@ PREGUNTAS = [
     "id": 7,
     "tipo": "escritura",
     "enunciado": (
-        "Completa el operador lógico para que imprima solo si el número está fuera del rango de 1 a 9:\n\n"
+        "Completa el operador lógico para que imprima solo si el número está fuera del rango de 1 a 9, en donde\n\n"
         "```python\n"
         "numero = 15\n"
         "if numero < 1 ______ numero > 9:\n"
