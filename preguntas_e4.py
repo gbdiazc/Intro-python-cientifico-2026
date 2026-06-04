@@ -23,6 +23,7 @@ PREGUNTAS = [
             "for numero in range(1,6):",
             "for numero in range( 1, 6 ):",
             "for numero in range(1, 6 ):",
+            "for numero in range( 1,6):",
             "for numero in range( 1,6 ):",
         ],
         "puntaje": 1,
@@ -33,15 +34,12 @@ PREGUNTAS = [
         "id": 2,
         "tipo": "escritura",
         "enunciado": (
-            "Completa el código que imprime solo números pares del 0 al 10:\n\n"
+            "Completa el código que imprime solo números pares del 0 al 10 (con paso de 2):\n\n"
             "```python\n"
             "______\n"
             "    print(numero)\n"
             "```\n\n"
-            "Escribe la línea del `for` que falta.\n"
-            "- Variable: `numero`\n"
-            "- Rango: 0 al 10 (inclusive)\n"
-            "- Paso: 2 (para pares)"
+            "Escribe la línea del `for` que falta:"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -50,6 +48,8 @@ PREGUNTAS = [
             "for numero in range( 0, 11, 2 ):",
             "for numero in range(0, 11 , 2):",
             "for numero in range(0,11 , 2):",
+            "for numero in range( 0,11,2 ):",
+            "for numero in range( 0, 11, 2):",
         ],
         "puntaje": 1,
     },
@@ -59,8 +59,8 @@ PREGUNTAS = [
         "id": 3,
         "tipo": "escritura",
         "enunciado": (
-            "Escribe una función llamada `saludar` que imprima 'Hola'.\n\n"
-            "No necesita argumentos ni return."
+            "Escribe una función llamada `saludar` que imprima `'Hola'`.\n\n"
+            "No necesita argumentos ni `return`."
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -73,6 +73,8 @@ PREGUNTAS = [
             "def saludar( ):\n  print(\"Hola\")",
             "def saludar():\n    print( \"Hola\" )",
             "def saludar():\n    print( 'Hola' )",
+            "def saludar( ):\n    print( 'Hola' )",
+            "def saludar( ):\n    print( \"Hola\" )",
         ],
         "puntaje": 1,
     },
@@ -106,13 +108,13 @@ PREGUNTAS = [
         "enunciado": (
             "¿Cuál código imprime números del 1 al 3 usando `for`?"
         ),
-        "opciones": [
-            "for i in range(1, 3):\n    print(i)",
-            "for i in range(1, 4):\n    print(i)",
-            "for i in range(0, 3):\n    print(i)",
-            "for i in range(1, 3, 1):\n    print(i)",
-        ],
-        "respuesta_correcta": "for i in range(1, 4):\n    print(i)",
+        "opciones": {
+            "a": "for i in range(1, 3):\n    print(i)",
+            "b": "for i in range(1, 4):\n    print(i)",
+            "c": "for i in range(0, 3):\n    print(i)",
+            "d": "for i in range(1, 3, 1):\n    print(i)",
+        },
+        "respuesta_correcta": "b",
         "puntaje": 1,
     },
 
@@ -122,46 +124,54 @@ PREGUNTAS = [
         "tipo": "escritura",
         "enunciado": (
             "Escribe una función llamada `duplicar` que reciba una variable `x` e imprima el doble.\n\n"
-            "Por ejemplo: `duplicar(5)` imprime 10"
+            "Por ejemplo: `duplicar(5)` imprime `10`"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
-            # Con * 2 - comillas dobles
+            # Con * 2, 4 espacios
             "def duplicar(x):\n    print(x * 2)",
             "def duplicar(x):\n    print(x*2)",
-            "def duplicar(x):\n  print(x * 2)",
             "def duplicar( x ):\n    print(x * 2)",
-            "def duplicar( x ):\n  print(x * 2)",
-            
-            # Con + x
-            "def duplicar(x):\n    print(x + x)",
-            "def duplicar(x):\n    print(x+x)",
-            "def duplicar(x):\n  print(x + x)",
-            
-            # Con espacios en print
-            "def duplicar(x):\n    print( x * 2 )",
-            "def duplicar(x):\n    print( x + x )",
-            
-            # Con espacios después de :
+            "def duplicar( x ):\n    print(x*2)",
             "def duplicar(x) :\n    print(x * 2)",
             "def duplicar( x ) :\n    print(x * 2)",
+            "def duplicar(x):\n    print( x * 2 )",
+            "def duplicar( x ):\n    print( x * 2 )",
+            # Con * 2, 2 espacios
+            "def duplicar(x):\n  print(x * 2)",
+            "def duplicar(x):\n  print(x*2)",
+            "def duplicar( x ):\n  print(x * 2)",
+            # Con + x, 4 espacios
+            "def duplicar(x):\n    print(x + x)",
+            "def duplicar(x):\n    print(x+x)",
+            "def duplicar( x ):\n    print(x + x)",
+            "def duplicar(x):\n    print( x + x )",
+            # Con + x, 2 espacios
+            "def duplicar(x):\n  print(x + x)",
+            "def duplicar(x):\n  print(x+x)",
+            # Con tab
+            "def duplicar(x):\n\tprint(x * 2)",
+            "def duplicar(x):\n\tprint(x*2)",
+            "def duplicar(x):\n\tprint(x + x)",
+            "def duplicar( x ):\n\tprint(x * 2)",
         ],
         "puntaje": 1,
     },
 
-    # ── P7 — Completar CONTINUE ───────────────────────────
+    # ── P7 — Completar CONTINUE ────────────────────────────
     {
         "id": 7,
         "tipo": "escritura",
         "enunciado": (
-            "Completa el código que salta (no imprime) números impares:\n\n"
+            "Completa el código que **salta la iteración** cuando el número es par (no lo imprime):\n\n"
             "```python\n"
             "for i in range(1, 6):\n"
-            "    if i % 2 != 0:\n"
+            "    if i % 2 == 0:\n"
             "        ______\n"
             "    print(i)\n"
             "```\n\n"
-            "Escribe solo la palabra clave para saltar la iteración:"
+            "Resultado esperado: imprime 1, 3, 5 (salta los pares).\n\n"
+            "Escribe la palabra clave (NO es break):"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -175,37 +185,31 @@ PREGUNTAS = [
         "id": 8,
         "tipo": "opcion_multiple",
         "enunciado": (
-            "¿Cuál es la salida de este código?\n\n"
-            "```python\n"
-            "def sumar(a, b):\n"
-            "    return a + b\n"
-            "resultado = sumar(3, 4)\n"
-            "print(resultado)\n"
-            "```"
+            "¿Cuál función recibe un número y **retorna** el doble?"
         ),
-        "opciones": [
-            "7",
-            "34",
-            "3 4",
-            "Error",
-        ],
-        "respuesta_correcta": "7",
+        "opciones": {
+            "a": "def doble(n):\n    print(n * 2)",
+            "b": "def doble(n):\n    return n * 2",
+            "c": "def doble():\n    return n * 2",
+            "d": "def doble(n):\n    n * 2",
+        },
+        "respuesta_correcta": "b",
         "puntaje": 1,
     },
 
-    # ── P9 — Escribir CONTINUE en loop ──────────────────────
+    # ── P9 — Completar CONTINUE en loop ──────────────────────
     {
         "id": 9,
         "tipo": "escritura",
         "enunciado": (
-            "Completa el código que **salta a la siguiente iteración** cuando número >= 3.\n\n"
+            "Completa el código que **salta a la siguiente iteración** cuando número >= 3:\n\n"
             "```python\n"
             "for numero in range(1, 6):\n"
             "    if numero >= 3:\n"
             "        _______\n"
             "    print(numero)\n"
             "```\n\n"
-            "Resultado esperado: imprime 1, 2, luego salta (3, 4, 5 no se imprimen).\n\n"
+            "Resultado esperado: imprime 1, 2 (luego salta 3, 4, 5).\n\n"
             "Escribe la palabra clave (NO es break, es la que continúa al siguiente número):"
         ),
         "placeholder": "Tu respuesta aquí...",
@@ -220,10 +224,10 @@ PREGUNTAS = [
         "id": 10,
         "tipo": "escritura",
         "enunciado": (
-            "¿Cuántas veces se imprime 'Hola'?\n\n"
+            "¿Cuántas veces se imprime `'Hola'`?\n\n"
             "```python\n"
             "for i in range(0, 5):\n"
-            "    print(\"Hola\")\n"
+            "    print('Hola')\n"
             "```\n\n"
             "Escribe solo el número:"
         ),
