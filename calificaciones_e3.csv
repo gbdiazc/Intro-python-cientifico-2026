@@ -61,3 +61,9 @@ while i <= 5:
 while i <= 5:
     print(i)
     i += 1",1
+"2026-06-04 16:17:50","Nadia González",6,3,5,08:02,"if num%4==0","if num % 4 == 0:",0,"Menor","Menor",1,"if i%2!=0: 
+                   print (i)","if i % 2 != 0:
+        print(i)",1,"if numero%2==0 and numero>0:
+                     print (“válido”)","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"10","10",1
