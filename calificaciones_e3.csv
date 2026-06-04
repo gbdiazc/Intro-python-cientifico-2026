@@ -129,3 +129,17 @@ elif edad >= 13:",0,"temperatura = 15","temperatura = 15
 while temperatura < 20:
     print(temperatura)
     temperatura += 1",0,"Menor","Menor",1,""," < = ",0
+"2026-06-04 16:19:42","Raquel Itzel Rodríguez Cisneros",4,2,5,10:00,"temperatura = 15 
+while temperatura <= 19:
+print(temperatura)
+temperatura += 1 = temperatura + 1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"else","or",0,"Menor","Menor",1,"i = 1
+while i <= 5:
+    print(i)
+    i += 1","i = 1
+while i <= 5:
+    print(i)
+    i += 1",1,"","if edad >= 18:
+elif edad >= 13:",0
