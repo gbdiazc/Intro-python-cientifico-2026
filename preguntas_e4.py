@@ -38,7 +38,10 @@ PREGUNTAS = [
             "______\n"
             "    print(numero)\n"
             "```\n\n"
-            "Escribe la línea del `for` que falta (con paso de 2):"
+            "Escribe la línea del `for` que falta.\n"
+            "- Variable: `numero`\n"
+            "- Rango: 0 al 10 (inclusive)\n"
+            "- Paso: 2 (para pares)"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -79,14 +82,15 @@ PREGUNTAS = [
         "id": 4,
         "tipo": "escritura",
         "enunciado": (
-            "Completa el código que detiene el loop cuando encuentra un número par:\n\n"
+            "Completa el código que **detiene completamente el loop** cuando encuentra un número par:\n\n"
             "```python\n"
             "for i in range(1, 10):\n"
             "    if i % 2 == 0:\n"
             "        ______\n"
             "    print(i)\n"
             "```\n\n"
-            "Escribe solo la palabra clave para detener el loop:"
+            "Resultado esperado: imprime 1, luego se detiene (porque 2 es par).\n\n"
+            "Escribe la palabra clave:"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -117,36 +121,30 @@ PREGUNTAS = [
         "id": 6,
         "tipo": "escritura",
         "enunciado": (
-            "Escribe una función llamada `duplicar` que reciba un número y imprima el doble.\n\n"
+            "Escribe una función llamada `duplicar` que reciba una variable `x` e imprima el doble.\n\n"
             "Por ejemplo: `duplicar(5)` imprime 10"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             # Con * 2 - comillas dobles
-            "def duplicar(numero):\n    print(numero * 2)",
-            "def duplicar(numero):\n    print(numero*2)",
-            "def duplicar(numero):\n  print(numero * 2)",
-            "def duplicar( numero ):\n    print(numero * 2)",
-            "def duplicar( numero ):\n  print(numero * 2)",
+            "def duplicar(x):\n    print(x * 2)",
+            "def duplicar(x):\n    print(x*2)",
+            "def duplicar(x):\n  print(x * 2)",
+            "def duplicar( x ):\n    print(x * 2)",
+            "def duplicar( x ):\n  print(x * 2)",
             
-            # Con * 2 - comillas simples
-            "def duplicar(numero):\n    print(numero * 2)",
-            
-            # Con + numero - comillas dobles
-            "def duplicar(numero):\n    print(numero + numero)",
-            "def duplicar(numero):\n    print(numero+numero)",
-            "def duplicar(numero):\n  print(numero + numero)",
-            
-            # Con + numero - comillas simples
-            "def duplicar(numero):\n    print(numero + numero)",
+            # Con + x
+            "def duplicar(x):\n    print(x + x)",
+            "def duplicar(x):\n    print(x+x)",
+            "def duplicar(x):\n  print(x + x)",
             
             # Con espacios en print
-            "def duplicar(numero):\n    print( numero * 2 )",
-            "def duplicar(numero):\n    print( numero + numero )",
+            "def duplicar(x):\n    print( x * 2 )",
+            "def duplicar(x):\n    print( x + x )",
             
             # Con espacios después de :
-            "def duplicar(numero) :\n    print(numero * 2)",
-            "def duplicar( numero ) :\n    print(numero * 2)",
+            "def duplicar(x) :\n    print(x * 2)",
+            "def duplicar( x ) :\n    print(x * 2)",
         ],
         "puntaje": 1,
     },
@@ -200,14 +198,15 @@ PREGUNTAS = [
         "id": 9,
         "tipo": "escritura",
         "enunciado": (
-            "Completa el código que imprime solo números menores a 3:\n\n"
+            "Completa el código que **salta a la siguiente iteración** cuando número >= 3.\n\n"
             "```python\n"
             "for numero in range(1, 6):\n"
             "    if numero >= 3:\n"
             "        _______\n"
             "    print(numero)\n"
             "```\n\n"
-            "Escribe la palabra clave que salta la iteración:"
+            "Resultado esperado: imprime 1, 2, luego salta (3, 4, 5 no se imprimen).\n\n"
+            "Escribe la palabra clave (NO es break, es la que continúa al siguiente número):"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [

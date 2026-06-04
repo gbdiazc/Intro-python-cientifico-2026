@@ -69,7 +69,7 @@ PREGUNTAS = [
             "En cada iteración:\n"
             "- Imprime la temperatura actual\n"
             "- Incrementa la temperatura en 1\n\n"
-            "Considera `temperatura = 15`"
+            "Considera `temperatura = 15` como definida previamente, no la tienes que volver a definir"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -207,24 +207,24 @@ PREGUNTAS = [
     },
 
     # ── P7 — Completar AND ───────────────────────────────────
-    {
-        "id": 7,
-        "tipo": "escritura",
-        "enunciado": (
-            "Completa el operador lógico para que imprima solo si está entre 1 y 9:\n\n"
-            "```python\n"
-            "numero = 7\n"
-            "if numero > 0 ______ numero < 10:\n"
-            "    print(\"Está entre 1 y 9\")\n"
-            "```\n\n"
-            "Escribe solo el operador:"
-        ),
-        "placeholder": "Tu respuesta aquí...",
-        "respuestas_validas": [
-            "and",
-        ],
-        "puntaje": 1,
-    },
+{
+    "id": 7,
+    "tipo": "escritura",
+    "enunciado": (
+        "Completa el operador lógico para que imprima solo si el número está fuera del rango de 1 a 9:\n\n"
+        "```python\n"
+        "numero = 15\n"
+        "if numero < 1 ______ numero > 9:\n"
+        "    print(\"Fuera de rango\")\n"
+        "```\n\n"
+        "Escribe solo el operador:"
+    ),
+    "placeholder": "Tu respuesta aquí...",
+    "respuestas_validas": [
+        "or",
+    ],
+    "puntaje": 1,
+},
 
     # ── P8 — Opción múltiple resultado ELSE ─────────────────
     {
