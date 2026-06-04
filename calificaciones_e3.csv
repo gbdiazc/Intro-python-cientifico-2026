@@ -173,3 +173,6 @@ elif edad >= 13:",0,"or","or",1,"10","10",1,"Menor","Menor",1
 "2026-06-04 18:14:21","Daniela Alvarez Guerrero",4,2,5,08:54,"if  num%4==0","if num % 4 == 0:",0,"if  i%2!=0
 print( i)","if i % 2 != 0:
         print(i)",0,"Menor","Menor",1,"or","or",1,"while i<=5:"," < = ",0
+"2026-06-04 18:17:20","Eliseo Andrei",8,4,5,08:11,"if i%2==0:
+print(i)","if i % 2 != 0:
+        print(i)",0,"Menor","Menor",1,"if num%4==0:","if num % 4 == 0:",1,"or","or",1,"10","10",1
