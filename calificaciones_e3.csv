@@ -161,3 +161,12 @@ while temperatura < 20:
 while temperatura < 20:
     print(temperatura)
     temperatura += 1",0
+"2026-06-04 18:09:48","Itzel Idalia Muñoz Muñiz",6,3,5,06:00,"while temperatura>=15 and temperatura <=19:
+   print(temperatura)
+   temperatura=temperatura+1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"if (edad>18)
+
+if(edad>13)","if edad >= 18:
+elif edad >= 13:",0,"or","or",1,"10","10",1,"Menor","Menor",1
