@@ -35,6 +35,14 @@ def cargar_examen(numero_examen):
             "preguntas": PREG_E3,
             "csv": "calificaciones_e3.csv",
         }
+    elif numero_examen == 4:
+        from preguntas_e4 import PREGUNTAS as PREG_E4
+        return {
+            "numero": 4,
+            "titulo": "Loops (FOR), BREAK, CONTINUE, Funciones y Argumentos",
+            "preguntas": PREG_E4,
+            "csv": "calificaciones_e4.csv",
+        }
     else:
         return None
 
@@ -54,7 +62,7 @@ PUNTOS_POR_PREGUNTA = 2   # 5 × 2 = 10
 #   None        → Los alumnos eligen (pantalla de selección)
 #   1           → Solo Examen 1 (directo a login)
 #   2           → Solo Examen 2 (directo a login)
-EXAMEN_FIJO = 3  # Cambia aquí: None, 1 o 2
+EXAMEN_FIJO = None  # Cambia aquí: None, 1 o 2
 
 # ── CSS global — tema claro ───────────────────────────────────────────────────
 st.markdown("""
@@ -434,7 +442,7 @@ if EXAMEN_FIJO is None and st.session_state.pantalla == "seleccionar_examen":
     st.markdown("#### 🎓 ¿Cuál examen deseas presentar?")
     st.markdown("")
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     
     with col1:
         st.markdown(
@@ -478,6 +486,21 @@ if EXAMEN_FIJO is None and st.session_state.pantalla == "seleccionar_examen":
         if st.button("Seleccionar", key="btn_e3", use_container_width=True):
             st.session_state.numero_examen = 3
             st.session_state.examen_config = cargar_examen(3)
+            st.session_state.pantalla = "login"
+            st.rerun()
+    
+    with col4:
+        st.markdown(
+            '<div style="background:#f0ede8; border:2px solid #a16207; border-radius:12px; padding:20px; text-align:center; cursor:pointer;">'
+            '<div style="font-size:2rem; margin-bottom:8px;">🔄</div>'
+            '<div style="font-weight:600; color:#a16207; margin-bottom:4px;">Examen 4</div>'
+            '<div style="font-size:0.85rem; color:#555;">FOR, Funciones</div>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+        if st.button("Seleccionar", key="btn_e4", use_container_width=True):
+            st.session_state.numero_examen = 4
+            st.session_state.examen_config = cargar_examen(4)
             st.session_state.pantalla = "login"
             st.rerun()
     
