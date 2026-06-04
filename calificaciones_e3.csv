@@ -146,3 +146,12 @@ elif edad >= 13:",0
 "2026-06-04 16:20:39","Francisco Dionisio",4,2,5,08:21,"while i<=5:"," < = ",0,"if num%4 == 0:","if num % 4 == 0:",0,"or","or",1,"Menor","Menor",1,"if i%2 =! 0:
 print (i)","if i % 2 != 0:
         print(i)",0
+"2026-06-04 16:21:58","ELISEO",0,0,5,10:00,"and","or",0,"5","10",0,"If num %4==0:","if num % 4 == 0:",0,"temp=15
+while temp<=19:
+     print(temp)
+    temp=temp +1","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0
