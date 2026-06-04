@@ -111,3 +111,21 @@ elif edad >=13 or edad<18:","if edad >= 18:
 elif edad >= 13:",0,"print(i)
 if","if i % 2 != 0:
         print(i)",0,"while i <=5:"," < = ",0
+"2026-06-04 16:19:18","Wendy Cabrera González",2,1,5,10:00,"valido = int(Input(""Escribe un número""))
+if valido > 0 and valido % 2 == 0:
+      print(""valido"")","if numero > 0:
+    if numero % 2 == 0:
+        print(""válido"")",0,"edad = 15 
+if
+     edad > 18 
+     print(""Adulto"")
+else: 
+         edad > 13 and edad < 18
+         print(""Adolescente"")
+else:
+         edad < 13
+          print(""Niño"")","if edad >= 18:
+elif edad >= 13:",0,"temperatura = 15","temperatura = 15
+while temperatura < 20:
+    print(temperatura)
+    temperatura += 1",0,"Menor","Menor",1,""," < = ",0
