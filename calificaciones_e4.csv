@@ -15,3 +15,5 @@ Fecha,Nombre,Calificacion,Correctas,Total,Tiempo,P1_alumno,P1_correcta,P1_ok,P2_
 "2026-06-05 03:03:22","Pp",4,2,5,03:20,"def duplicar(x):
     print(2*×)","def duplicar(x):
     print(x * 2)",0,"for numero in range (1,6):","for numero in range(1, 6):",0,"","b",0,"5","5",1,"continue","continue",1
+"2026-06-05 03:06:03","Pqb",6,3,5,01:37,"","def duplicar(x):
+    print(x * 2)",0,"for instance in range (0,10,2):","for numero in range(0, 11, 2):",0,"b","b",1,"continue","continue",1,"b","b",1
