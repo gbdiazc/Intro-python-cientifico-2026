@@ -86,14 +86,14 @@ PREGUNTAS = [
         "id": 5,
         "tipo": "opcion_multiple",
         "enunciado": (
-            "Dada `dict = {\"color\": \"azul\", \"tamaño\": \"grande\"}`.\n\n"
+            "Dada `dicty = {\"color\": \"azul\", \"tamaño\": \"grande\"}`.\n\n"
             "¿Cuál línea obtiene el valor de la clave `\"color\"`?"
         ),
         "opciones": [
-            'valor = dict.color',
-            'valor = dict["color"]',
-            'valor = dict.get("color")',
-            'valor = dict["tamaño"]',
+            'valor = dicty.color',
+            'valor = dicty["color"]',
+            'valor = dicty.get("color")',
+            'valor = dicty["tamaño"]',
         ],
         "respuesta_correcta": 'valor = dict["color"]',
         "puntaje": 1,

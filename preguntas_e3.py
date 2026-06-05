@@ -56,6 +56,7 @@ PREGUNTAS = [
             "if num % 4 == 0:",
             "if num%4==0:",
             "if num % 4 == 0 :",
+            "if num%4 == 0:",
         ],
         "puntaje": 1,
     },
