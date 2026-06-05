@@ -444,17 +444,15 @@ elif st.session_state.pantalla == "examen":
                 with col:
                     seleccionado = val_actual == letra
                     estilo = (
-                        "background:#2e8b57; color:#fff; border:2px solid #2e8b57;"
+                        "background:#2e8b57 !important; color:#fff !important; border:2px solid #2e8b57 !important;"
                         if seleccionado else
-                        "background:#fff; color:#1a1a2e; border:2px solid #dde3ea;"
+                        "background:#fff !important; color:#1a1a2e !important; border:2px solid #dde3ea !important;"
                     )
                     st.markdown(
-                        f'<div style="{estilo} border-radius:8px; padding:8px; '
-                        f'text-align:center; font-weight:700; font-size:1rem; '
-                        f'margin-bottom:4px;">{letra})</div>',
+                        f'<style>.btn_{pid}_{letra} button {{ {estilo} }}</style>',
                         unsafe_allow_html=True,
                     )
-                    if st.button(f"Elegir {letra}", key=f"btn_{pid}_{letra}", use_container_width=True):
+                    if st.button(f"{letra})", key=f"btn_{pid}_{letra}", use_container_width=True):
                         st.session_state.respuestas[pid] = letra
                         st.rerun()
 
