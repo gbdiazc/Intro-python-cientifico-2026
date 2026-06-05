@@ -193,11 +193,14 @@ def color_timer(seg):
     return "timer-low"
 
 def normalizar_codigo(codigo):
+    """Normaliza código quitando espacios extra pero SIN cambiar mayúsculas
+    (Python distingue mayúsculas: 'For' es inválido, 'for' es correcto)."""
     lineas = [l.strip() for l in codigo.strip().split('\n')]
     lineas = [l for l in lineas if l]
-    return '\n'.join(lineas).lower().replace(' ', '')
+    return '\n'.join(lineas).replace(' ', '')
 
 def normalizar(texto):
+    """Para respuestas cortas (palabras clave, números): ignora mayúsculas y espacios."""
     return " ".join(texto.lower().split())
 
 def calificar(preguntas, respuestas):
