@@ -437,20 +437,26 @@ elif st.session_state.pantalla == "examen":
                 else:
                     st.markdown(f"**{letra})** `{codigo}`")
 
-            # Radio solo con letras para seleccionar
-            idx = letras.index(val) if val in letras else None
-            opciones_radio = [f"{l})" for l in letras]
-            sel_label = st.radio(
-                f"opc_{pid}",
-                opciones_radio,
-                index=idx,
-                key=f"radio_{pid}",
-                horizontal=True,
-                label_visibility="collapsed",
-            )
-            if sel_label is not None:
-                # Recuperar la letra (quitar el ")")
-                st.session_state.respuestas[pid] = sel_label.replace(")", "").strip()
+            # Botones para seleccionar opción
+            val_actual = st.session_state.respuestas.get(pid, None)
+            cols = st.columns(len(letras))
+            for col, letra in zip(cols, letras):
+                with col:
+                    seleccionado = val_actual == letra
+                    estilo = (
+                        "background:#2e8b57; color:#fff; border:2px solid #2e8b57;"
+                        if seleccionado else
+                        "background:#fff; color:#1a1a2e; border:2px solid #dde3ea;"
+                    )
+                    st.markdown(
+                        f'<div style="{estilo} border-radius:8px; padding:8px; '
+                        f'text-align:center; font-weight:700; font-size:1rem; '
+                        f'margin-bottom:4px;">{letra})</div>',
+                        unsafe_allow_html=True,
+                    )
+                    if st.button(f"Elegir {letra}", key=f"btn_{pid}_{letra}", use_container_width=True):
+                        st.session_state.respuestas[pid] = letra
+                        st.rerun()
 
         st.markdown("---")
 
