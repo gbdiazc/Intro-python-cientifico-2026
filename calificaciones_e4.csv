@@ -21,3 +21,11 @@ Fecha,Nombre,Calificacion,Correctas,Total,Tiempo,P1_alumno,P1_correcta,P1_ok,P2_
      print(2*x)","def duplicar(x):
     print(x * 2)",1,"for in range(0,10,2):","for numero in range(0, 11, 2):",0,"b","b",1,"continue","continue",1
 "2026-06-05 16:30:35","Irais Yolotzin Cantellano Cervantes",6,3,5,02:23,"b","b",1,"Continue","continue",1,"for numero in range (0,10,2):","for numero in range(0, 11, 2):",0,"for numero in range (1,6):","for numero in range(1, 6):",0,"Continue","continue",1
+"2026-06-05 16:33:02","José Samuel espinosa",4,2,5,05:02,"for i in range(1, 10):
+    if i % 2 == 0:
+        break
+    print(i)","break",0,"For i in range (0,11,2):
+    print(numero)","for numero in range(0, 11, 2):",0,"for i in range(1, 6):
+    if i % 2 == 0:
+        continue 
+    print(i)","continue",0,"b","b",1,"5","5",1
