@@ -42,3 +42,8 @@ Print(""Hola"")","def saludar():
 "2026-06-05 16:35:58","Eliseo Andrei",10,5,5,07:28,"5","5",1,"continue","continue",1,"b","b",1,"def saludar():
       print ('Hola')","def saludar():
     print(""Hola"")",1,"break","break",1
+"2026-06-05 16:36:03","Cabrera González Wendy",6,3,5,07:49,"b","b",1,"Continue","continue",1,"5","5",1,"for i in range(1, 6):
+    if i % 2 == 0:
+    else: 
+print(i)","continue",0,"For número in range (1,6)
+    print(numero)","for numero in range(1, 6):",0
