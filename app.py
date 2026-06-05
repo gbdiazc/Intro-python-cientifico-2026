@@ -27,13 +27,13 @@ def cargar_examen(numero_examen):
 
 st.set_page_config(page_title="Examen — Python IMP", page_icon="🧪", layout="centered")
 
-TIEMPO_LIMITE    = 10 * 60
+TIEMPO_LIMITE    = 12 * 60
 NUM_PREGUNTAS    = 5
 PUNTOS_POR_PREGUNTA = 2
 
 # ── CONFIGURACIÓN ─────────────────────────────────────────────────────────────
 # None → pantalla de selección | 1,2,3,4 → directo a ese examen
-EXAMEN_FIJO = None
+EXAMEN_FIJO = 4
 
 # ── CSS ───────────────────────────────────────────────────────────────────────
 st.markdown("""
