@@ -439,17 +439,18 @@ elif st.session_state.pantalla == "examen":
 
             # Radio solo con letras para seleccionar
             idx = letras.index(val) if val in letras else None
-            sel = st.radio(
+            opciones_radio = [f"{l})" for l in letras]
+            sel_label = st.radio(
                 f"opc_{pid}",
-                letras,
-                format_func=lambda x: f"{x})",
+                opciones_radio,
                 index=idx,
                 key=f"radio_{pid}",
                 horizontal=True,
                 label_visibility="collapsed",
             )
-            if sel is not None:
-                st.session_state.respuestas[pid] = sel
+            if sel_label is not None:
+                # Recuperar la letra (quitar el ")")
+                st.session_state.respuestas[pid] = sel_label.replace(")", "").strip()
 
         st.markdown("---")
 
