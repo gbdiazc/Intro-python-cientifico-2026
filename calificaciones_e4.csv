@@ -39,3 +39,6 @@ Print(""Hola"")","def saludar():
 "2026-06-05 16:35:56","Josue Andrade Hernandez",10,5,5,02:43,"def duplicar(x):
     print(x * 2)","def duplicar(x):
     print(x * 2)",1,"b","b",1,"continue","continue",1,"5","5",1,"break","break",1
+"2026-06-05 16:35:58","Eliseo Andrei",10,5,5,07:28,"5","5",1,"continue","continue",1,"b","b",1,"def saludar():
+      print ('Hola')","def saludar():
+    print(""Hola"")",1,"break","break",1
