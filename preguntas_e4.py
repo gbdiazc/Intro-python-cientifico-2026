@@ -6,6 +6,7 @@
 PREGUNTAS = [
 
     # ── P1 — Completar FOR loop ────────────────────────────
+    # ✅ Variable fijada en "numero" por el body ya mostrado
     {
         "id": 1,
         "tipo": "escritura",
@@ -25,6 +26,9 @@ PREGUNTAS = [
             "for numero in range(1, 6 ):",
             "for numero in range( 1,6):",
             "for numero in range( 1,6 ):",
+            "for numero in range(1, 6) :",
+            "for numero in range(1,6) :",
+            "for numero in range( 1, 6 ) :",
         ],
         "puntaje": 1,
     },
@@ -50,6 +54,8 @@ PREGUNTAS = [
             "for numero in range(0,11 , 2):",
             "for numero in range( 0,11,2 ):",
             "for numero in range( 0, 11, 2):",
+            "for numero in range(0, 11, 2) :",
+            "for numero in range(0,11,2) :",
         ],
         "puntaje": 1,
     },
@@ -64,22 +70,42 @@ PREGUNTAS = [
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
+            # 4 espacios, comilla doble
             "def saludar():\n    print(\"Hola\")",
             "def saludar( ):\n    print(\"Hola\")",
-            "def saludar():\n  print(\"Hola\")",
-            "def saludar():\n    print('Hola')",
-            "def saludar():\n  print('Hola')",
-            "def saludar( ):\n    print('Hola')",
-            "def saludar( ):\n  print(\"Hola\")",
+            "def saludar() :\n    print(\"Hola\")",
             "def saludar():\n    print( \"Hola\" )",
+            "def saludar( ):\n    print( \"Hola\" )",
+            # 4 espacios, comilla simple
+            "def saludar():\n    print('Hola')",
+            "def saludar( ):\n    print('Hola')",
+            "def saludar() :\n    print('Hola')",
             "def saludar():\n    print( 'Hola' )",
             "def saludar( ):\n    print( 'Hola' )",
-            "def saludar( ):\n    print( \"Hola\" )",
+            # 2 espacios, comilla doble
+            "def saludar():\n  print(\"Hola\")",
+            "def saludar( ):\n  print(\"Hola\")",
+            "def saludar() :\n  print(\"Hola\")",
+            "def saludar():\n  print( \"Hola\" )",
+            # 2 espacios, comilla simple
+            "def saludar():\n  print('Hola')",
+            "def saludar( ):\n  print('Hola')",
+            "def saludar() :\n  print('Hola')",
+            "def saludar():\n  print( 'Hola' )",
+            # tab, comilla doble
+            "def saludar():\n\tprint(\"Hola\")",
+            "def saludar( ):\n\tprint(\"Hola\")",
+            "def saludar() :\n\tprint(\"Hola\")",
+            # tab, comilla simple
+            "def saludar():\n\tprint('Hola')",
+            "def saludar( ):\n\tprint('Hola')",
+            "def saludar() :\n\tprint('Hola')",
         ],
         "puntaje": 1,
     },
 
     # ── P4 — Completar BREAK ───────────────────────────────
+    # ✅ Solo "break" es correcto — no hay variantes sintácticas
     {
         "id": 4,
         "tipo": "escritura",
@@ -102,6 +128,7 @@ PREGUNTAS = [
     },
 
     # ── P5 — Opción múltiple FOR ──────────────────────────
+    # ✅ Verificado: b imprime 1,2,3 — a y d imprimen 1,2 — c imprime 0,1,2
     {
         "id": 5,
         "tipo": "opcion_multiple",
@@ -119,6 +146,7 @@ PREGUNTAS = [
     },
 
     # ── P6 — Escribir función con argumentos ───────────────
+    # ✅ La pregunta especifica "variable x" — se acepta solo x como parámetro
     {
         "id": 6,
         "tipo": "escritura",
@@ -128,7 +156,7 @@ PREGUNTAS = [
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
-            # Con * 2, 4 espacios
+            # ── x * 2 — 4 espacios ──
             "def duplicar(x):\n    print(x * 2)",
             "def duplicar(x):\n    print(x*2)",
             "def duplicar( x ):\n    print(x * 2)",
@@ -137,28 +165,96 @@ PREGUNTAS = [
             "def duplicar( x ) :\n    print(x * 2)",
             "def duplicar(x):\n    print( x * 2 )",
             "def duplicar( x ):\n    print( x * 2 )",
-            # Con * 2, 2 espacios
+            # ── x * 2 — 2 espacios ──
             "def duplicar(x):\n  print(x * 2)",
             "def duplicar(x):\n  print(x*2)",
             "def duplicar( x ):\n  print(x * 2)",
-            # Con + x, 4 espacios
+            "def duplicar(x) :\n  print(x * 2)",
+            # ── x * 2 — tab ──
+            "def duplicar(x):\n\tprint(x * 2)",
+            "def duplicar(x):\n\tprint(x*2)",
+            "def duplicar( x ):\n\tprint(x * 2)",
+            "def duplicar(x) :\n\tprint(x * 2)",
+            # ── 2 * x — 4 espacios ──
+            "def duplicar(x):\n    print(2 * x)",
+            "def duplicar(x):\n    print(2*x)",
+            "def duplicar( x ):\n    print(2 * x)",
+            "def duplicar( x ):\n    print(2*x)",
+            "def duplicar(x) :\n    print(2 * x)",
+            "def duplicar(x):\n    print( 2 * x )",
+            "def duplicar( x ):\n    print( 2 * x )",
+            # ── 2 * x — 2 espacios ──
+            "def duplicar(x):\n  print(2 * x)",
+            "def duplicar(x):\n  print(2*x)",
+            "def duplicar( x ):\n  print(2 * x)",
+            "def duplicar( x ):\n  print(2*x)",
+            "def duplicar(x) :\n  print(2 * x)",
+            # ── 2 * x — tab ──
+            "def duplicar(x):\n\tprint(2 * x)",
+            "def duplicar(x):\n\tprint(2*x)",
+            "def duplicar( x ):\n\tprint(2 * x)",
+            "def duplicar(x) :\n\tprint(2 * x)",
+            # ── x + x — 4 espacios ──
             "def duplicar(x):\n    print(x + x)",
             "def duplicar(x):\n    print(x+x)",
             "def duplicar( x ):\n    print(x + x)",
             "def duplicar(x):\n    print( x + x )",
-            # Con + x, 2 espacios
+            "def duplicar(x) :\n    print(x + x)",
+            # ── x + x — 2 espacios ──
             "def duplicar(x):\n  print(x + x)",
             "def duplicar(x):\n  print(x+x)",
-            # Con tab
-            "def duplicar(x):\n\tprint(x * 2)",
-            "def duplicar(x):\n\tprint(x*2)",
+            "def duplicar( x ):\n  print(x + x)",
+            # ── x + x — tab ──
             "def duplicar(x):\n\tprint(x + x)",
-            "def duplicar( x ):\n\tprint(x * 2)",
+            "def duplicar(x):\n\tprint(x+x)",
+            "def duplicar( x ):\n\tprint(x + x)",
+            # ── f-string x * 2 ──
+            "def duplicar(x):\n    print(f\"{x * 2}\")",
+            "def duplicar(x):\n    print(f\"{x*2}\")",
+            "def duplicar(x):\n    print(f'{x * 2}')",
+            "def duplicar(x):\n    print(f'{x*2}')",
+            "def duplicar(x):\n  print(f\"{x * 2}\")",
+            "def duplicar(x):\n  print(f\"{x*2}\")",
+            "def duplicar(x):\n\tprint(f\"{x * 2}\")",
+            "def duplicar(x):\n\tprint(f\"{x*2}\")",
+            # ── f-string 2 * x ──
+            "def duplicar(x):\n    print(f\"{2 * x}\")",
+            "def duplicar(x):\n    print(f\"{2*x}\")",
+            "def duplicar(x):\n    print(f'{2 * x}')",
+            "def duplicar(x):\n    print(f'{2*x}')",
+            "def duplicar(x):\n  print(f\"{2 * x}\")",
+            "def duplicar(x):\n  print(f\"{2*x}\")",
+            "def duplicar(x):\n\tprint(f\"{2 * x}\")",
+            "def duplicar(x):\n\tprint(f\"{2*x}\")",
+            # ── f-string x + x ──
+            "def duplicar(x):\n    print(f\"{x + x}\")",
+            "def duplicar(x):\n    print(f\"{x+x}\")",
+            "def duplicar(x):\n    print(f'{x + x}')",
+            "def duplicar(x):\n  print(f\"{x + x}\")",
+            "def duplicar(x):\n\tprint(f\"{x + x}\")",
+            # ── str(x * 2) ──
+            "def duplicar(x):\n    print(str(x * 2))",
+            "def duplicar(x):\n    print(str(x*2))",
+            "def duplicar(x):\n  print(str(x * 2))",
+            "def duplicar(x):\n  print(str(x*2))",
+            "def duplicar(x):\n\tprint(str(x * 2))",
+            "def duplicar(x):\n\tprint(str(x*2))",
+            # ── str(2 * x) ──
+            "def duplicar(x):\n    print(str(2 * x))",
+            "def duplicar(x):\n    print(str(2*x))",
+            "def duplicar(x):\n  print(str(2 * x))",
+            "def duplicar(x):\n\tprint(str(2 * x))",
+            # ── str(x + x) ──
+            "def duplicar(x):\n    print(str(x + x))",
+            "def duplicar(x):\n    print(str(x+x))",
+            "def duplicar(x):\n  print(str(x + x))",
+            "def duplicar(x):\n\tprint(str(x + x))",
         ],
         "puntaje": 1,
     },
 
     # ── P7 — Completar CONTINUE ────────────────────────────
+    # ✅ Solo "continue" — no hay variantes
     {
         "id": 7,
         "tipo": "escritura",
@@ -181,6 +277,8 @@ PREGUNTAS = [
     },
 
     # ── P8 — Opción múltiple función con return ────────────
+    # ✅ Verificado: b es la única que retorna el doble correctamente
+    # a) imprime pero no retorna; c) n no está definida; d) no hace nada
     {
         "id": 8,
         "tipo": "opcion_multiple",
@@ -198,6 +296,7 @@ PREGUNTAS = [
     },
 
     # ── P9 — Completar CONTINUE en loop ──────────────────────
+    # ✅ Solo "continue" — no hay variantes
     {
         "id": 9,
         "tipo": "escritura",
@@ -210,7 +309,7 @@ PREGUNTAS = [
             "    print(numero)\n"
             "```\n\n"
             "Resultado esperado: imprime 1, 2 (luego salta 3, 4, 5).\n\n"
-            "Escribe la palabra clave (NO es break, es la que continúa al siguiente número):"
+            "Escribe la palabra clave (NO es break):"
         ),
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
@@ -220,6 +319,7 @@ PREGUNTAS = [
     },
 
     # ── P10 — Contador en FOR ──────────────────────────────
+    # ✅ range(0,5) → 5 iteraciones confirmado
     {
         "id": 10,
         "tipo": "escritura",
@@ -234,6 +334,9 @@ PREGUNTAS = [
         "placeholder": "Tu respuesta aquí...",
         "respuestas_validas": [
             "5",
+            " 5",
+            "5 ",
+            "5.",
         ],
         "puntaje": 1,
     },
