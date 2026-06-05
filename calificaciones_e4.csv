@@ -76,3 +76,6 @@ print(numero)","for numero in range(0, 11, 2):",0,"b","b",1,"Break","break",1
 "2026-06-05 16:42:02","Leonardo García Martínez",8,4,5,03:21,"continue","continue",1,"for numero in range(1, 6):","for numero in range(1, 6):",1,"def duplicar(x):
     print(x * 2)","def duplicar(x):
     print(x * 2)",1,"a","b",0,"5","5",1
+"2026-06-05 16:43:32","Daniela Alvarez Guerrero",6,3,5,00:54,"","b",0,"break","break",1,"def duplicar(x)
+   multiplicacion=x*2","def duplicar(x):
+    print(x * 2)",0,"5","5",1,"continue","continue",1
