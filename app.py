@@ -230,9 +230,8 @@ elif st.session_state.pantalla == "login":
     render_header(subtitulo)
 
     st.markdown('<div class="login-box">', unsafe_allow_html=True)
-    st.markdown("#### Ingresa tus datos para comenzar")
-    nombre   = st.text_input("👤 Nombre completo",  placeholder="p. ej. Ana García López")
-    matricula = st.text_input("🔢 Matrícula / ID",   placeholder="p. ej. IMP-2025-001")
+    st.markdown("#### Antes de comenzar, escribe tu nombre")
+    nombre = st.text_input("👤 Nombre completo", placeholder="p. ej. Ana García López", label_visibility="collapsed")
     st.markdown("")
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
@@ -247,13 +246,12 @@ elif st.session_state.pantalla == "login":
     )
 
     if iniciar:
-        if not nombre.strip() or not matricula.strip():
-            st.error("⚠️ Por favor ingresa tu nombre y matrícula antes de continuar.")
+        if not nombre.strip():
+            st.error("⚠️ Por favor ingresa tu nombre antes de continuar.")
         elif cfg is None:
             st.error("⚠️ No hay examen configurado. Regresa y selecciona uno.")
         else:
             st.session_state.nombre          = nombre.strip()
-            st.session_state.matricula       = matricula.strip()
             st.session_state.preguntas_selec = random.sample(cfg["preguntas"], NUM_PREGUNTAS)
             st.session_state.respuestas      = {}
             st.session_state.inicio_ts       = time.time()
@@ -291,7 +289,7 @@ elif st.session_state.pantalla == "examen":
         unsafe_allow_html=True)
     st.markdown(
         f'<div class="alumno-info">👤 <strong>{st.session_state.nombre}</strong>'
-        f'&nbsp;·&nbsp;{st.session_state.matricula}</div>',
+        f'</div>',
         unsafe_allow_html=True)
 
     preguntas = st.session_state.preguntas_selec
@@ -408,7 +406,7 @@ elif st.session_state.pantalla == "resultado":
     with col2:
         if st.button("🔄  Nuevo intento", use_container_width=True):
             pantalla_dest = "login" if EXAMEN_FIJO else "seleccionar_examen"
-            for k in ["nombre", "matricula", "preguntas_selec", "respuestas",
+            for k in ["nombre", "preguntas_selec", "respuestas",
                       "inicio_ts", "detalle", "calificacion", "tiempo_usado", "enviado"]:
                 if k in st.session_state:
                     del st.session_state[k]
