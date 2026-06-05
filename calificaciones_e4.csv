@@ -9,3 +9,6 @@ Fecha,Nombre,Calificacion,Correctas,Total,Tiempo,P1_alumno,P1_correcta,P1_ok,P2_
     print(x * 2)",0,"","b",0,"","b",0,"","break",0,"","for numero in range(0, 11, 2):",0
 "2026-06-05 02:40:29","gaby",6,3,5,01:51,"break","break",1,"for numero in range(1,6):","for numero in range(1, 6):",1,"for numero inn range(0,11,2):","for numero in range(0, 11, 2):",0,"b","b",1,"","def duplicar(x):
     print(x * 2)",0
+"2026-06-05 02:43:54","gaby",2,1,5,00:15,"","break",0,"","continue",0,"","def duplicar(x):
+    print(x * 2)",0,"b","b",1,"","def saludar():
+    print(""Hola"")",0
