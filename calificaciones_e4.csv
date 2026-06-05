@@ -33,3 +33,6 @@ Fecha,Nombre,Calificacion,Correctas,Total,Tiempo,P1_alumno,P1_correcta,P1_ok,P2_
 x=x*2
 return x","def duplicar(x):
     print(x * 2)",0,"break","break",1,"c","b",0
+"2026-06-05 16:35:06","Isaias Espinosa",8,4,5,06:55,"Continue","continue",1,"b","b",1,"5","5",1,"def saludar():
+Print(""Hola"")","def saludar():
+    print(""Hola"")",0,"break","break",1
