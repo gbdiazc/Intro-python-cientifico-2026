@@ -33,7 +33,7 @@ PUNTOS_POR_PREGUNTA = 2
 
 # ── CONFIGURACIÓN ─────────────────────────────────────────────────────────────
 # None → pantalla de selección | 1,2,3,4 → directo a ese examen
-EXAMEN_FIJO = 4
+EXAMEN_FIJO = None
 
 # ── CSS ───────────────────────────────────────────────────────────────────────
 st.markdown("""

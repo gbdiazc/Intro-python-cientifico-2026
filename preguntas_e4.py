@@ -29,6 +29,7 @@ PREGUNTAS = [
             "for numero in range(1, 6) :",
             "for numero in range(1,6) :",
             "for numero in range( 1, 6 ) :",
+            "for numero in range (1,6):",
         ],
         "puntaje": 1,
     },
@@ -249,6 +250,8 @@ PREGUNTAS = [
             "def duplicar(x):\n    print(str(x+x))",
             "def duplicar(x):\n  print(str(x + x))",
             "def duplicar(x):\n\tprint(str(x + x))",
+            # ── str(x + x) ──
+            "def duplicar(x):\r\n duplicar = x * 2\r\n return duplicar",
         ],
         "puntaje": 1,
     },
